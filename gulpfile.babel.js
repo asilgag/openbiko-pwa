@@ -257,7 +257,6 @@ browserSync({
 gulp.task('default', ['clean'], cb =>
 runSequence(
   'clearCache',
-  'generate-favicon',
   'styles',
   ['lint', 'scripts', 'images', 'copy'],
   'html',
