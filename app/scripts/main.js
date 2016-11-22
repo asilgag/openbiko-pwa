@@ -11,6 +11,17 @@
      * Process click-on-target events
      */
     document.addEventListener('partial-fetched', function() {
+      // Show mdl-layout__content
+      document.querySelector('.mdl-layout__content').style.opacity = 1;
+
+      var contentImages = document.querySelectorAll('.mdl-layout__content img');
+      contentImages.forEach(function(item) {
+        item.addEventListener('load', function(e) {
+          e.target.style.opacity = 1;
+        });
+      });
+
+      // Set events for click-on-target
       var clickOnTargetLinks = document.querySelectorAll('.click-on-target');
       clickOnTargetLinks.forEach(function(item) {
         item.addEventListener(

@@ -310,6 +310,7 @@ return swPrecache.write(filepath, {
     // Add/remove glob patterns to match your directory setup.
     `${rootDir}/images/**/*`,
     `${rootDir}/partials/**/*`,
+    `${rootDir}/data/**/*`,
     `${rootDir}/scripts/**/*.js`,
     `${rootDir}/styles/**/*.css`,
     `${rootDir}/*.{html,json}`

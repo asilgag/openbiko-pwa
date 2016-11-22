@@ -1,0 +1,9 @@
+.mdl-layout__content,
+.mdl-layout__content img{
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}
+
+a, span {
+  outline: 0;
+}

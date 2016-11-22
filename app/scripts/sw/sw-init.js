@@ -86,7 +86,7 @@
             var snackbarContainer = document.getElementById('snackbar');
             snackbarContainer.MaterialSnackbar.showSnackbar(
               {
-                message: 'Preparado para trabajar sin conexión a Internet',
+                message: 'Preparado para trabajar offline',
                 timeout: 10000,
                 actionHandler: function() {
                   var snackBar = document.querySelector('#snackbar');

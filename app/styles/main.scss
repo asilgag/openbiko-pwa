@@ -21,17 +21,24 @@ will be correctly compiled during `gulp serve` and `gulp`
 //@import "_material.red-blue.min";
 
 .hero{
-  width: 100%;
-  height: calc(1vw * 23.72166);
+  background-color: #ccc;
+  img {
+    width: 100%;
+    height: calc(1vw * 23.72166);
+  }
+}
+
+
+h4{
+  margin: 10px 0 0 0;
+  padding: 10px;
+  text-align: center;
+  font-weight: 300;
+  /*background-color: #991415;
+  color: #fff;*/
 }
 
 #anyos{
-  .card-group-title{
-    h2{
-      margin-right: auto;
-      margin-left: auto;
-    }
-  }
   .mdl-cell{
     display: flex;
   }
@@ -43,7 +50,7 @@ will be correctly compiled during `gulp serve` and `gulp`
     width:100%;
     .mdl-card__title {
       color: rgba(0, 0, 0, .54);
-      height: 176px;
+      height: 116px;
     }
     .mdl-card__title-text {
       padding-bottom: 20px;
@@ -204,7 +211,7 @@ will be correctly compiled during `gulp serve` and `gulp`
   }
 }
 
-#demo-menu-lower-right{
+#menu-lower-right{
   margin-left: auto;
 }
 

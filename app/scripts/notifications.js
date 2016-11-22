@@ -32,24 +32,22 @@
     this.subscription = null;
 
     // Process send auto notifications
-    var clickOnTargetLinks = document.querySelectorAll(
+    this.sendAutoNotificationLink = document.querySelector(
       '.send-auto-notification'
     );
-    clickOnTargetLinks.forEach(function(item) {
-      item.addEventListener(
-        'click',
-        function() {
-          self.registration.showNotification(
-            'Biko Open Space',
-            {
-              body: 'Notificación auto generada',
-              icon: '/images/app-shell/master-icon.png',
-              badge: '/images/app-shell/master-icon.png'
-            }
-          );
-        }
-      );
-    });
+    self.sendAutoNotificationLink.addEventListener(
+      'click',
+      function() {
+        self.registration.showNotification(
+          'Biko Open Space',
+          {
+            body: 'Notificación auto generada',
+            icon: '/images/app-shell/master-icon.png',
+            badge: '/images/app-shell/master-icon.png'
+          }
+        );
+      }
+    );
 
     this.init = function() {
       self.applicationServerKey = self.urlB64ToUint8Array(self.publicKey);
@@ -71,6 +69,7 @@
       // Are Notifications supported in the service worker?
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.warn('Notifications aren\'t supported.');
+        self.showSnackBar('Notificaciones no soportadas');
         return false;
       }
 
@@ -87,6 +86,7 @@
       // Check if push messaging is supported
       if (!('PushManager' in window)) {
         console.warn('Push messaging isn\'t supported.');
+        self.showSnackBar('Mensajes push no soportados');
         return false;
       }
 
@@ -165,6 +165,7 @@
           .then(function(subscription) {
             if (!self.subscription) {
               self.showSnackBar('Notificaciones activadas correctamente');
+              self.sendAutoNotificationLink.classList.remove('hidden');
             }
             self.subscription = subscription;
             self.saveDataToServer(event.target);
@@ -252,42 +253,6 @@
         outputArray[i] = rawData.charCodeAt(i);
       }
       return outputArray;
-    };
-
-    this.subscribeUser = function() {
-      const applicationServerKey = self.urlB64ToUint8Array(self.publicKey);
-      self.swRegistration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: applicationServerKey
-      })
-        .then(function(subscription) {
-          console.log(JSON.stringify(subscription));
-
-          /* var options = {
-           body: 'Did you make a $1,000,000 purchase at Dr. Evil...',
-           icon: 'images/ccard.png',
-           vibrate: [200, 100, 200, 100, 200, 100, 400],
-           tag: 'request',
-           actions: [
-           {
-           action: 'yes',
-           title: 'Yes',
-           icon: 'images/yes.png'
-           },
-           {
-           action: 'no',
-           title: 'No',
-           icon: 'images/no.png'
-           }
-           ]
-           };
-
-           self.swRegistration.showNotification('Credit Card', options);
-           */
-        })
-        .catch(function(err) {
-          console.log('Failed to subscribe the user: ', err);
-        });
     };
   }
 

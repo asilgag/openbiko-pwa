@@ -37,16 +37,20 @@
             <span class="mdl-layout-title">Biko Open Space</span>
 
 
-            <button id="demo-menu-lower-right"
+            <button id="menu-lower-right"
                     class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">more_vert</i>
+                <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
             </button>
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                for="demo-menu-lower-right">
-                <li class="mdl-menu__item send-auto-notification">Generar notificación</li>
+                for="menu-lower-right">
+                <li class="mdl-menu__item send-auto-notification hidden">Generar notificación</li>
                 <li class="mdl-menu__item"><a href="https://github.com/asilgag/" target="_blank">Ver código frontend</a></li>
                 <li class="mdl-menu__item"><a href="https://github.com/asilgag/" target="_blank">Ver código backend</a></li>
+                <li class="mdl-menu__item"><a href="mailto:alberto.silva@biko2.com" target="_blank">Contacto</a></li>
             </ul>
 
 
@@ -62,10 +66,9 @@
             <span class="mdl-layout-title">Biko Open Space</span>
         </div>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/"><i class="material-icons">cake</i> ¡10 años ya!</a>
+            <a class="mdl-navigation__link" href="/"><i class="material-icons">cake</i> Hace 10 años</a>
             <a class="mdl-navigation__link" href="/programa"><i class="material-icons">event_note</i> Programa</a>
             <a class="mdl-navigation__link" href="/me-apunto"><i class="material-icons">person_add</i> ¡Me apunto!</a>
-            <!--a class="mdl-navigation__link" href="/como-llegar"><i class="material-icons">directions</i> Cómo llegar</a-->
             <a class="mdl-navigation__link" href="/faq"><i class="material-icons">pages</i> FAQ</a>
         </nav>
     </div>
@@ -147,7 +150,7 @@
 
 
 <!-- Load non-shell styles synchronously, to avoid side effects with mdl -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css">
 <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-blue.min.css" type="text/css">
 <link rel="stylesheet" href="styles/main.css" type="text/css">

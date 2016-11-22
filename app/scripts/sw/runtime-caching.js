@@ -27,10 +27,40 @@
   // See https://github.com/GoogleChrome/sw-toolbox/blob/6e8242dc328d1f1cfba624269653724b26fa94f1/README.md#toolboxroutergeturlpattern-handler-options
   // and https://github.com/GoogleChrome/sw-toolbox/blob/6e8242dc328d1f1cfba624269653724b26fa94f1/README.md#toolboxfastest
   // for more details on how this handler is defined and what the toolbox.fastest strategy does.
+
+  // Cache all external assets from googleapis, gstatic, etc
   global.toolbox.router.get('/(.*)', global.toolbox.fastest, {
     origin: /\.(?:googleapis|gstatic|getmdl)\.(com|io)$/
   });
 
-  global.toolbox.router.get('/data/(.*)', global.toolbox.fastest, {
+  // Al ser una SPA, hay que definir las urls virtuales que también tenemos que precachear
+  global.toolbox.precache(
+    [
+      '/',
+      '/programa',
+      '/me-apunto',
+      '/faq'
+    ]
+  );
+
+  // BUG: toolbox se basa en el primer "origin" de arriba para buscar en su cache,
+  // de modo que las urls definidas en toolbox.precache() sí que son cacheadas
+  // pero luego no son servidas.
+  // Hay dos soluciones posibles:
+  // 1) No definir ningún origin y cachear todos los recursos externos sin control
+  // (útil en la mayoría de los casos)
+  // 2) Definir varios toolbox.router.get() por cada url que pongamos en toolbox.precache()
+  // Me decanto por esta segunda opción para tenerla como referencia para el futuro
+  global.toolbox.router.get('/', global.toolbox.fastest, {
+    origin: /\.(?:firebaseapp)\.(com)$/
+  });
+  global.toolbox.router.get('/programa', global.toolbox.fastest, {
+    origin: /\.(?:firebaseapp)\.(com)$/
+  });
+  global.toolbox.router.get('/me-apunto', global.toolbox.fastest, {
+    origin: /\.(?:firebaseapp)\.(com)$/
+  });
+  global.toolbox.router.get('/faq', global.toolbox.fastest, {
+    origin: /\.(?:firebaseapp)\.(com)$/
   });
 })(self);
