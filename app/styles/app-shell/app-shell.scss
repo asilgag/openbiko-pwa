@@ -1,0 +1,49 @@
+/* App Shell */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(roboto.woff2) format('woff2');
+
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.mdl-tabs.is-upgraded{
+  .mdl-tabs__tab-bar{
+    background: #000 !important;
+    border:none;
+    .mdl-tabs__tab {
+      padding:0 12px;
+      color: rgba(254, 254, 254, .54);
+      &.is-active {
+        color: rgba(254, 254, 254, .87);
+      }
+    }
+  }
+}
+
+.mdl-tabs__tab{
+  flex-grow:1;
+}
+
+// Material Design Lite base components
+@import "app-shell-components/_material-design-lite";
+
+// Customizations
+@import "app-shell-custom/_loader";
+@import "app-shell-custom/_share";
+@import "app-shell-custom/_side-nav";
+
+
+
+
+
+
+

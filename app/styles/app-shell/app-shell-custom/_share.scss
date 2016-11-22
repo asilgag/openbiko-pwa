@@ -1,0 +1,44 @@
+
+.mdl-button--fab {
+  svg {
+    vertical-align: sub;
+  }
+}
+
+#share {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  z-index: 999;
+}
+
+.share-menu-container{
+  .mdl-menu__outline{
+    background: transparent;
+    box-shadow: none;
+  }
+  .mdl-menu__item{
+    height: 60px;
+    line-height: 60px;
+    padding: 0 2px;
+    text-align: right;
+    &:hover{
+      background: transparent;
+    }
+  }
+  .mdl-chip{
+    padding: 7px 12px;
+    border-radius: 24px;
+    background: #fff;
+    img{
+      background: #fff;
+    }
+  }
+  .mdl-chip__text{
+    font-size:15px;
+  }
+  .mdl-chip__contact{
+    margin-right: 0;
+    margin-left: 8px;
+  }
+}
