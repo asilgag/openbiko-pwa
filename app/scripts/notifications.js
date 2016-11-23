@@ -39,9 +39,9 @@
       'click',
       function() {
         self.registration.showNotification(
-          'Biko Open Space',
+          'Notificación auto generada',
           {
-            body: 'Notificación auto generada',
+            body: 'Biko Open Space',
             icon: '/images/app-shell/master-icon.png',
             badge: '/images/app-shell/master-icon.badge.png'
           }
@@ -54,32 +54,102 @@
 
       self.applicationServerKey = self.urlB64ToUint8Array(self.publicKey);
 
-      // Check if program switch have been loaded,
-      // and process them or wait for an event
-      var switchInputs = document.querySelectorAll('.mdl-switch__input');
-      if (switchInputs && switchInputs.length > 0) {
-        console.log('[Notifications] Switch inputs present');
-        self.initializeState();
-      } else {
-        console.log(
-          '[Notifications] Switch inputs not present. ' +
-          'Waiting until "json-loaded" event is fired...'
+      if (self.arePushNotificationsAvailable()) {
+        document.addEventListener(
+          'service-worker-registered',
+          function() {
+            // Check if program switches have been loaded,
+            // and process them or wait for an event
+            var switchInputs = document.querySelectorAll('.mdl-switch__input');
+            if (switchInputs && switchInputs.length > 0) {
+              console.log('[Notifications] Switch inputs present');
+              self.initializeState();
+            } else {
+              console.log(
+                '[Notifications] Switch inputs not present. ' +
+                'Waiting until "json-loaded" event is fired...'
+              );
+            }
+            // Attach this event outside above if-else, to ensure it is always
+            // catched. Otherwise, the previous "else" is not always executed,
+            // thus leading to not always calling self.initializeState()
+            document.addEventListener(
+              'json-loaded',
+              self.initializeState
+            );
+
+            window.addEventListener('offline', function() {
+              console.log('[Notifications] Offline mode detected');
+              self.hideSwitches();
+              self.showSnackBar('Sin conexión. Notificaciones desactivadas');
+            });
+
+            window.addEventListener('online', function() {
+              console.log('[Notifications] Online mode detected');
+              self.showSwitches();
+              self.showSnackBar('De nuevo online. Notificaciones restauradas');
+            });
+          }
         );
       }
-      // Attach this event outside above if-else, to ensure it is always
-      // catched. Otherwise, the previous "else" is not always executed,
-      // thus leading to not always calling self.initializeState()
-      document.addEventListener(
-        'json-loaded',
-        self.initializeState
-      );
+    };
+
+    this.initializeState = function() {
+      console.log('[Notifications] UI state initialization started');
+      // We need the service worker registration to check for a subscription
+      navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        self.registration = serviceWorkerRegistration;
+        // Do we already have a push message subscription?
+        serviceWorkerRegistration.pushManager.getSubscription()
+          .then(function(subscription) {
+            console.log('[Notifications] pushManager response received');
+            self.subscription = subscription;
+
+            // Show auto notification link
+            self.showAutoNotificationLink();
+
+            // Propagate data from server if device is already suscribed
+            if (self.subscription) {
+              self.propagateDataFromServer();
+            } else {
+              console.log('[Notifications] pushManager subscription ' +
+                'not present: no data will be loaded from server.');
+            }
+
+            // Add click events before showing switches
+            document.querySelectorAll('.mdl-switch__input').forEach(
+              function(item) {
+                // Add events to switch inputs
+                item.addEventListener(
+                  'click',
+                  self.processSwitchClick
+                );
+              }
+            );
+
+            // Show switches
+            self.showSwitches();
+          })
+          .catch(function(err) {
+            console.warn('[Notifications] Error during ' +
+              'getSubscription()', err);
+          });
+      });
+      console.log('[Notifications] UI state initialization completed');
     };
 
     this.arePushNotificationsAvailable = function() {
+      // Are service workers supported?
+      if (!('ServiceWorkerRegistration' in window)) {
+        console.warn('[Notifications] Service Workers aren\'t supported.');
+        self.showSnackBar('Notificaciones Web Push no soportadas');
+        return false;
+      }
+
       // Are Notifications supported in the service worker?
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
         console.warn('[Notifications] Notifications aren\'t supported.');
-        self.showSnackBar('Notificaciones no soportadas');
+        self.showSnackBar('Notificaciones Web Push no soportadas');
         return false;
       }
 
@@ -100,54 +170,16 @@
         return false;
       }
       console.log('[Notifications] Push notifications supported');
+      // self.showSnackBar('Notificaciones Web Push soportadas');
 
       return true;
     };
 
-    this.initializeState = function() {
-      if (self.arePushNotificationsAvailable()) {
-        console.log('[Notifications] UI state initialization started');
-        // We need the service worker registration to check for a subscription
-        navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-          self.registration = serviceWorkerRegistration;
-          // Do we already have a push message subscription?
-          serviceWorkerRegistration.pushManager.getSubscription()
-            .then(function(subscription) {
-              console.log('[Notifications] pushManager response received');
-              self.subscription = subscription;
-
-              // Enable any UI which subscribes / unsubscribes from
-              // push messages.
-              var switchInputs = document.querySelectorAll(
-                '.mdl-switch__input'
-              );
-
-              // Propagate data from server if device is already suscribed
-              if (self.subscription) {
-                self.sendAutoNotificationLink.classList.remove('hidden');
-                self.propagateDataFromServer();
-              } else {
-                console.log('[Notifications] pushManager subscription ' +
-                  'not present: no data will be loaded from server.');
-              }
-
-              switchInputs.forEach(function(item) {
-                // Add events to switch inputs
-                item.addEventListener(
-                  'click',
-                  self.processSwitchClick
-                );
-                // Show items (hidden by default)
-                item.parentElement.classList.remove('hidden');
-              });
-              console.log('[Notifications] UI state: switch inputs displayed');
-            })
-            .catch(function(err) {
-              console.warn('[Notifications] Error during ' +
-                'getSubscription()', err);
-            });
-        });
-        console.log('[Notifications] UI state initialization completed');
+    this.showAutoNotificationLink = function() {
+      if (Notification.permission === 'granted' &&
+        self.sendAutoNotificationLink.classList.contains('hidden')) {
+        self.sendAutoNotificationLink.classList.remove('hidden');
+        console.log('[Notifications] auto notification link displayed');
       }
     };
 
@@ -200,6 +232,9 @@
                 'for the first time');
               self.showSnackBar('Notificaciones activadas correctamente');
             }
+            // Show auto notification link
+            self.showAutoNotificationLink();
+
             self.subscription = subscription;
             self.saveDataToServer(event.target);
           })
@@ -235,21 +270,45 @@
         body: JSON.stringify(dataToSave)
       }).then(function(response) {
         if (response.status === 200) {
+          // Show snackbar
+          self.showSnackBar('Preferencia guardada correctamente', 800);
           console.log(
             '[Notifications] Data saved into ' + url + ':',
             JSON.stringify(dataToSave)
           );
         } else {
-          // Uncheck checkbox
-          self.uncheckSwitch(switchItem);
+          // This check evaluates the original state, not the current one,
+          // thus resetting switch to its original state
+          if (switchItem.getAttribute('checked') === 'checked') {
+            // Check checkbox
+            self.checkSwitch(switchItem);
+          } else {
+            // Uncheck checkbox
+            self.uncheckSwitch(switchItem);
+          }
 
           // Show snackbar
-          self.showSnackBar(
-            'Error guardando datos. ' +
-            'Por favor, vuelve a intentarlo'
-          );
+          self.showSnackBar('Error guardando preferencia!', 800);
         }}
       );
+    };
+
+    this.showSwitches = function() {
+      document.querySelectorAll('.mdl-switch__input').forEach(
+        function(item) {
+          item.parentElement.classList.remove('hidden');
+        }
+      );
+      console.log('[Notifications] UI state: switch inputs displayed');
+    };
+
+    this.hideSwitches = function() {
+      document.querySelectorAll('.mdl-switch__input').forEach(
+        function(item) {
+          item.parentElement.classList.add('hidden');
+        }
+      );
+      console.log('[Notifications] UI state: switch inputs hidden');
     };
 
     this.checkSwitch = function(switchElement) {
@@ -263,12 +322,13 @@
     };
 
     // Show snackbar
-    this.showSnackBar = function(message) {
+    this.showSnackBar = function(message, timeout) {
+      window.componentHandler.upgradeAllRegistered();
       var snackbarContainer = document.getElementById('snackbar');
       snackbarContainer.MaterialSnackbar.showSnackbar(
         {
           message: message,
-          timeout: 3000,
+          timeout: timeout || 2000,
           actionHandler: function() {
             var snackBar = document.querySelector('#snackbar');
             snackBar.classList.remove('mdl-snackbar--active');
@@ -294,11 +354,6 @@
     };
   }
 
-  document.addEventListener(
-    'service-worker-registered',
-    function() {
-      var openBikoPWANotifications = new OpenBikoPWANotifications();
-      openBikoPWANotifications.init();
-    }
-  );
+  var openBikoPWANotifications = new OpenBikoPWANotifications();
+  openBikoPWANotifications.init();
 })();

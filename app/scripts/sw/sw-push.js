@@ -8,19 +8,38 @@
 'use strict';
 
 self.addEventListener('push', function(event) {
-  console.log('[Service Worker] Push Received.');
-  console.log(event);
-  console.log(event.data.json());
-  var payload = event.data.json();
+  console.log('[Service Worker] Push Received:', event);
+
+  var payload;
+  var defaultPayload = {
+    title: 'Notificación por defecto',
+    config: {
+      body: 'Biko Open Space',
+      icon: '/images/app-shell/master-icon.png',
+      badge: '/images/app-shell/master-icon.badge.png'
+    }
+  };
+
+  // Avoid errors using event.data.json()
+  try {
+    payload = event.data.json();
+    console.log('[Service Worker] JSON payload found:', payload);
+  } catch (e) {
+    payload = defaultPayload;
+    console.log(
+      '[Service Worker] No payload found. Using default payload:',
+      payload
+    );
+  }
+
   event.waitUntil(
     self.registration.showNotification(payload.title, payload.config)
   );
 });
 
 self.addEventListener('notificationclick', function(event) {
-  console.log('[Service Worker] Notification click Received.');
+  console.log('[Service Worker] Notification click received');
   event.notification.close();
-
   event.waitUntil(
     clients.openWindow('https://openbiko-pwa.firebaseapp.com/programa')
   );

@@ -86,7 +86,7 @@
             snackbarContainer.MaterialSnackbar.showSnackbar(
               {
                 message: 'Preparado para trabajar offline',
-                timeout: 10000,
+                timeout: 5000,
                 actionHandler: function() {
                   var snackBar = document.querySelector('#snackbar');
                   snackBar.classList.remove('mdl-snackbar--active');

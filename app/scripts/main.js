@@ -2,6 +2,17 @@
 
 (function() {
   'use strict';
+  /*
+   // Are Notifications supported in the service worker?
+   if (!('ServiceWorkerRegistration' in window)) {
+   alert('[Notifications] Notifications aren\'t supported1.');
+   }
+
+   // Check if push messaging is supported
+   if (!('PushManager' in window)) {
+   alert('[Notifications] Push messaging isn\'t supported2.');
+   }
+   */
 
   /** Main app */
   function OpenBikoPWA() {
@@ -196,51 +207,46 @@
         return;
       }
       self.loadedUrl = url;
-
-      fetch(url)
+      self.makeRequest({
+        method: 'GET',
+        url: url
+      })
         .then(function(response) {
-          if (response.status === 200) {
-            // response.text() is a Promise
-            response.text().then(function(text) {
-              console.log('[Main] ' + url + ' fetched');
-              // Dispatch events
-              document.dispatchEvent(new CustomEvent('partial-fetched'));
-              document.dispatchEvent(new CustomEvent('partial-fetched:' + url));
+          console.log('[Main] ' + url + ' fetched');
+          // Dispatch events
+          document.dispatchEvent(new CustomEvent('partial-fetched'));
+          document.dispatchEvent(new CustomEvent('partial-fetched:' + url));
 
-              document.querySelector('.mdl-layout__content').innerHTML = text;
-              console.log('[Main] ' + url + ' loaded into DOM');
+          document.querySelector('.mdl-layout__content').innerHTML = response;
+          console.log('[Main] ' + url + ' loaded into DOM');
 
-              // register newly added elements to DOM
-              window.componentHandler.upgradeAllRegistered();
-              // MaterialLayout.prototype.init();
+          // register newly added elements to DOM
+          window.componentHandler.upgradeAllRegistered();
+          // MaterialLayout.prototype.init();
 
-              self.hideSideNav();
+          self.hideSideNav();
 
-              // Click the selected tab
-              self.clickSelectedTab();
+          // Click the selected tab
+          self.clickSelectedTab();
 
-              // Dispatch events
-              document.dispatchEvent(
-                new CustomEvent('partial-loaded')
-              );
-              document.dispatchEvent(
-                new CustomEvent('partial-loaded:' + url)
-              );
-              document.dispatchEvent(
-                new CustomEvent('partial-fetched-and-loaded')
-              );
-              document.dispatchEvent(
-                new CustomEvent('partial-fetched-and-loaded:' + url)
-              );
+          // Dispatch events
+          document.dispatchEvent(
+            new CustomEvent('partial-loaded')
+          );
+          document.dispatchEvent(
+            new CustomEvent('partial-loaded:' + url)
+          );
+          document.dispatchEvent(
+            new CustomEvent('partial-fetched-and-loaded')
+          );
+          document.dispatchEvent(
+            new CustomEvent('partial-fetched-and-loaded:' + url)
+          );
 
-              return true;
-            });
-          } else {
-            console.log(response);
-          }
+          return true;
         })
         .catch(function(err) {
-          console.log(err);
+          console.log('[Main] error fetching ' + url, err);
         });
     };
 
@@ -251,71 +257,114 @@
         return;
       }
 
-      fetch(url)
+      self.makeRequest({
+        method: 'GET',
+        url: url
+      })
         .then(function(response) {
-          if (response.status === 200) {
-            response.json().then(function(json) {
-              console.log('[Main] ' + url + ' fetched');
-              var template;
-              for (var i = 0; i - json.length; i++) {
-                template = document.querySelector('template').content;
-                template.querySelector('.title').textContent =
-                  json[i].title;
-                // template.querySelector('.description').textContent =
-                // json[i].description;
-                template.querySelector('.timestart').textContent =
-                  json[i].timestart;
-                template.querySelector('.length').textContent =
-                  json[i].length + ' minutos / ';
-                template.querySelector('.venue').textContent =
-                  json[i].venue;
-                template.querySelector('.speaker').textContent =
-                  json[i].speaker;
-                if (json[i].icon === undefined) {
-                  template.querySelector('.icon').src = '';
-                } else {
-                  template.querySelector('.icon').src =
-                    json[i].icon;
-                }
-                template.querySelector('.mdl-switch').setAttribute(
-                  'for',
-                  'list-switch-' + json[i].id
-                );
-                template.querySelector('.mdl-switch__input').setAttribute(
-                  'id',
-                  'list-switch-' + json[i].id
-                );
+          var json = JSON.parse(response);
+          console.log('[Main] ' + url + ' fetched');
+          var template;
+          for (var i = 0; i - json.length; i++) {
+            template = document.querySelector('template').content;
+            template.querySelector('.title').textContent =
+              json[i].title;
+            // template.querySelector('.description').textContent =
+            // json[i].description;
+            template.querySelector('.timestart').textContent =
+              json[i].timestart;
+            template.querySelector('.length').textContent =
+              json[i].length + ' minutos / ';
+            template.querySelector('.venue').textContent =
+              json[i].venue;
+            template.querySelector('.speaker').textContent =
+              json[i].speaker;
+            if (json[i].icon === undefined) {
+              template.querySelector('.icon').src = '';
+            } else {
+              template.querySelector('.icon').src =
+                json[i].icon;
+            }
+            template.querySelector('.mdl-switch').setAttribute(
+              'for',
+              'list-switch-' + json[i].id
+            );
+            template.querySelector('.mdl-switch__input').setAttribute(
+              'id',
+              'list-switch-' + json[i].id
+            );
 
-                if (json[i].icon === undefined) {
-                  template.querySelector('.mdl-chip').className += ' hidden';
-                } else {
-                  template.querySelector('.mdl-chip').className =
-                    'mdl-chip mdl-chip--contact';
-                }
+            if (json[i].icon === undefined) {
+              template.querySelector('.mdl-chip').className += ' hidden';
+            } else {
+              template.querySelector('.mdl-chip').className =
+                'mdl-chip mdl-chip--contact';
+            }
 
-                if (json[i].length === undefined) {
-                  template.querySelector('.info').className += ' hidden';
-                } else {
-                  template.querySelector('.info').className = 'info';
-                }
+            if (json[i].length === undefined) {
+              template.querySelector('.info').className += ' hidden';
+            } else {
+              template.querySelector('.info').className = 'info';
+            }
 
-                document.querySelector('.program-list').appendChild(
-                  document.importNode(template, true)
-                );
-              }
-              console.log('[Main] ' + url + ' loaded into DOM');
-
-              // register newly added elements to DOM
-              window.componentHandler.upgradeAllRegistered();
-
-              // Dispatch the event
-              document.dispatchEvent(new CustomEvent('json-loaded'));
-            });
+            document.querySelector('.program-list').appendChild(
+              document.importNode(template, true)
+            );
           }
+          console.log('[Main] ' + url + ' loaded into DOM');
+
+          // register newly added elements to DOM
+          window.componentHandler.upgradeAllRegistered();
+
+          // Dispatch the event
+          document.dispatchEvent(new CustomEvent('json-loaded'));
         })
         .catch(function(err) {
           console.log(err);
         });
+    };
+
+    /*
+     * Promisified version of XHR
+     * @see http://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
+     * @param options
+     */
+    this.makeRequest = function(options) {
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(options.method, options.url);
+        xhr.onload = function() {
+          if (this.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject({
+              status: this.status,
+              statusText: xhr.statusText
+            });
+          }
+        };
+        xhr.onerror = function() {
+          reject({
+            status: this.status,
+            statusText: xhr.statusText
+          });
+        };
+        if (options.headers) {
+          Object.keys(options.headers).forEach(function(key) {
+            xhr.setRequestHeader(key, options.headers[key]);
+          });
+        }
+        var params = options.params;
+        // We'll need to stringify if we've been given an object
+        // If we have a string, this is skipped.
+        if (params && typeof params === 'object') {
+          params = Object.keys(params).map(function(key) {
+            return encodeURIComponent(key) + '=' +
+              encodeURIComponent(params[key]);
+          }).join('&');
+        }
+        xhr.send(params);
+      });
     };
   }
 
