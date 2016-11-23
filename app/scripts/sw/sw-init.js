@@ -35,12 +35,9 @@
 
   if ('serviceWorker' in navigator &&
     (window.location.protocol === 'https:' || isLocalhost)) {
+    console.log('[Service Worker] Registration starts.');
     navigator.serviceWorker.register('service-worker.js')
       .then(function(registration) {
-        // Dispatch registration event (mainly for push notifications)
-        var registrationEvent = new CustomEvent('service-worker-registered');
-        document.dispatchEvent(registrationEvent);
-
         // updatefound is fired if service-worker.js changes.
         registration.onupdatefound = function() {
           // updatefound is also fired the very first time the SW is installed,
@@ -59,7 +56,8 @@
                   // fresh content will have been added to the cache.
                   // It's the perfect time to display a "New content is
                   // available; please refresh." message in the page's interface.
-                  console.log('New content is available; please refresh.');
+                  console.log('[Service Worker] New content available;' +
+                    ' please refresh.');
                   var snackbarContainer = document.getElementById('snackbar');
                   snackbarContainer.MaterialSnackbar.showSnackbar(
                     {
@@ -71,10 +69,11 @@
                       actionText: 'Recargar'
                     }
                   );
+
                   break;
 
                 case 'redundant':
-                  throw new Error('The installing ' +
+                  throw new Error('[Service Worker] The installing ' +
                     'service worker became redundant.');
 
                 default:
@@ -82,7 +81,8 @@
               }
             };
           } else {
-            console.log('Caching complete! Future visits will work offline.');
+            console.log('[Service Worker] Caching complete! ' +
+              'Future visits will work offline.');
             var snackbarContainer = document.getElementById('snackbar');
             snackbarContainer.MaterialSnackbar.showSnackbar(
               {
@@ -97,9 +97,15 @@
             );
           }
         };
+
+        console.log('[Service Worker] Registration completed');
+        // Dispatch registration event (mainly for push notifications)
+        document.dispatchEvent(
+          new CustomEvent('service-worker-registered')
+        );
       })
       .catch(function(e) {
-        console.error('Error during service worker registration:', e);
+        console.error('[Service Worker] Error during registration:', e);
       });
   }
 

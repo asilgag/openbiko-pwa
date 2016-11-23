@@ -22,6 +22,6 @@ self.addEventListener('notificationclick', function(event) {
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('https://openbiko-pwa.netlify.com/programa')
+    clients.openWindow('https://openbiko-pwa.firebaseapp.com/programa')
   );
 });

@@ -50,25 +50,35 @@
     );
 
     this.init = function() {
+      console.log('[Notifications] Service started');
+
       self.applicationServerKey = self.urlB64ToUint8Array(self.publicKey);
 
       // Check if program switch have been loaded,
       // and process them or wait for an event
       var switchInputs = document.querySelectorAll('.mdl-switch__input');
       if (switchInputs && switchInputs.length > 0) {
+        console.log('[Notifications] Switch inputs present');
         self.initializeState();
       } else {
-        document.addEventListener(
-          'json-loaded',
-          self.initializeState
+        console.log(
+          '[Notifications] Switch inputs not present. ' +
+          'Waiting until "json-loaded" event is fired...'
         );
       }
+      // Attach this event outside above if-else, to ensure it is always
+      // catched. Otherwise, the previous "else" is not always executed,
+      // thus leading to not always calling self.initializeState()
+      document.addEventListener(
+        'json-loaded',
+        self.initializeState
+      );
     };
 
     this.arePushNotificationsAvailable = function() {
       // Are Notifications supported in the service worker?
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-        console.warn('Notifications aren\'t supported.');
+        console.warn('[Notifications] Notifications aren\'t supported.');
         self.showSnackBar('Notificaciones no soportadas');
         return false;
       }
@@ -77,32 +87,35 @@
       // If its denied, it's a permanent block until the
       // user changes the permission
       if (Notification.permission === 'denied') {
-        console.warn('The user has blocked notifications.');
+        console.warn('[Notifications] The user has blocked notifications.');
         self.showSnackBar('Has bloqueado las notificaciones. ' +
-          'Actívalas para poder recibir nuestros avisos');
+          'Actívalas para recibir nuestros avisos');
         return false;
       }
 
       // Check if push messaging is supported
       if (!('PushManager' in window)) {
-        console.warn('Push messaging isn\'t supported.');
+        console.warn('[Notifications] Push messaging isn\'t supported.');
         self.showSnackBar('Mensajes push no soportados');
         return false;
       }
+      console.log('[Notifications] Push notifications supported');
 
       return true;
     };
 
     this.initializeState = function() {
-      console.log('initializeState START');
       if (self.arePushNotificationsAvailable()) {
+        console.log('[Notifications] UI state initialization started');
         // We need the service worker registration to check for a subscription
         navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
           self.registration = serviceWorkerRegistration;
           // Do we already have a push message subscription?
           serviceWorkerRegistration.pushManager.getSubscription()
             .then(function(subscription) {
+              console.log('[Notifications] pushManager response received');
               self.subscription = subscription;
+
               // Enable any UI which subscribes / unsubscribes from
               // push messages.
               var switchInputs = document.querySelectorAll(
@@ -111,7 +124,11 @@
 
               // Propagate data from server if device is already suscribed
               if (self.subscription) {
+                self.sendAutoNotificationLink.classList.remove('hidden');
                 self.propagateDataFromServer();
+              } else {
+                console.log('[Notifications] pushManager subscription ' +
+                  'not present: no data will be loaded from server.');
               }
 
               switchInputs.forEach(function(item) {
@@ -123,23 +140,35 @@
                 // Show items (hidden by default)
                 item.parentElement.classList.remove('hidden');
               });
+              console.log('[Notifications] UI state: switch inputs displayed');
             })
             .catch(function(err) {
-              console.warn('Error during getSubscription()', err);
+              console.warn('[Notifications] Error during ' +
+                'getSubscription()', err);
             });
         });
+        console.log('[Notifications] UI state initialization completed');
       }
     };
 
     this.propagateDataFromServer = function() {
-      console.log(JSON.stringify(self.subscription));
-      fetch('http://web-push-notifications-php-backend.local:8080/get-events.json', {
+      console.log(
+        '[Notifications] pushManager subscription is present: ',
+        JSON.stringify(self.subscription)
+      );
+
+      var url = 'https://webpush.dev.rodilla.conocimiento.com/get-events.json';
+      fetch(url, {
         method: 'post',
         mode: 'cors',
         body: JSON.stringify(self.subscription)
       }).then(function(response) {
         if (response.status === 200) {
           response.json().then(function(subscriptionValues) {
+            console.log(
+              '[Notifications] data fetched from ' + url + ':',
+              subscriptionValues
+            );
             var switchInputs = document.querySelectorAll('.mdl-switch__input');
             var itemId;
             switchInputs.forEach(function(item) {
@@ -157,21 +186,25 @@
 
     this.processSwitchClick = function(event) {
       navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        console.log('[Notifications] Trying to subscribe device...');
         // Do we already have a push message subscription?
         serviceWorkerRegistration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: self.applicationServerKey
         })
           .then(function(subscription) {
-            if (!self.subscription) {
+            if (self.subscription) {
+              console.log('[Notifications] Device previously suscribed');
+            } else {
+              console.log('[Notifications] Device suscribed ' +
+                'for the first time');
               self.showSnackBar('Notificaciones activadas correctamente');
-              self.sendAutoNotificationLink.classList.remove('hidden');
             }
             self.subscription = subscription;
             self.saveDataToServer(event.target);
           })
           .catch(function(err) {
-            console.log('Failed to subscribe the user: ', err);
+            console.log('[Notifications] Failed to subscribe device: ', err);
             self.showSnackBar('No has aceptado recibir notificaciones');
             self.subscription = null;
             self.uncheckSwitch(event.target);
@@ -194,14 +227,19 @@
         events: switchInputsArray,
         subscription: self.subscription
       };
-      console.log(JSON.stringify(dataToSave));
 
-      fetch('http://web-push-notifications-php-backend.local:8080/set-events', {
+      var url = 'https://webpush.dev.rodilla.conocimiento.com/set-events';
+      fetch(url, {
         method: 'post',
         mode: 'cors',
         body: JSON.stringify(dataToSave)
       }).then(function(response) {
-        if (response.status !== 200) {
+        if (response.status === 200) {
+          console.log(
+            '[Notifications] Data saved into ' + url + ':',
+            JSON.stringify(dataToSave)
+          );
+        } else {
           // Uncheck checkbox
           self.uncheckSwitch(switchItem);
 

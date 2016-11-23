@@ -7,13 +7,21 @@
   function OpenBikoPWA() {
     var self = this;
 
-    /**
-     * Process click-on-target events
-     */
-    document.addEventListener('partial-fetched', function() {
+    // Display program images when json has loaded
+    document.addEventListener('json-loaded', function() {
+      var jsonImages = document.querySelectorAll('.program-list img');
+      jsonImages.forEach(function(item) {
+        item.addEventListener('load', function(e) {
+          e.target.style.opacity = 1;
+        });
+      });
+    });
+
+    document.addEventListener('partial-loaded', function() {
       // Show mdl-layout__content
       document.querySelector('.mdl-layout__content').style.opacity = 1;
 
+      // Display content images when partial has loaded
       var contentImages = document.querySelectorAll('.mdl-layout__content img');
       contentImages.forEach(function(item) {
         item.addEventListener('load', function(e) {
@@ -67,37 +75,36 @@
 
       // home
       self.locationBar.route(/^\/?$/, function() {
-        console.log('[locationBar] HOME');
+        console.log('[LocationBar] /');
         self.selectorToClick = '.mdl-tabs__tab[href="#anyos"]';
         self.fetchUrlAndDisplay('partials/home.html');
       });
 
       // programa
       self.locationBar.route(/^\/?programa/, function() {
-        console.log('[locationBar] PROGRAMA');
+        console.log('[LocationBar] /programa');
         self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
         self.fetchUrlAndDisplay('partials/home.html');
       });
 
       // me apunto
       self.locationBar.route(/^\/?me\-apunto/, function() {
-        console.log('[locationBar] ME APUNTO');
+        console.log('[LocationBar] /me-apunto');
         self.selectorToClick = '.mdl-tabs__tab[href="#me-apunto"]';
         self.fetchUrlAndDisplay('partials/home.html');
       });
 
       // faq
       self.locationBar.route(/^\/?faq/, function() {
-        console.log('[locationBar] FAQ');
+        console.log('[LocationBar] /faq');
         self.selectorToClick = null;
         self.fetchUrlAndDisplay('partials/faq.html');
       });
 
       // programa json event listener
       document.addEventListener(
-        'partial-fetched-partials/home.html',
+        'partial-loaded:partials/home.html',
         function() {
-          console.log('[locationBar] PROGRAMA > JSON');
           self.fetchProgramAndDisplay('data/program.json');
         }
       );
@@ -120,7 +127,7 @@
       });
 
       document.addEventListener(
-        'partial-fetched-partials/home.html',
+        'partial-fetched-and-loaded:partials/home.html',
         function() {
           // Add events to tabs when loaded
           // We use a different selector
@@ -139,6 +146,7 @@
               }
             );
           });
+          console.log('[Main] Events attached to tabs');
         }
       );
 
@@ -171,17 +179,21 @@
       // No he encontrado forma de pasar params a una Promise
       // Avoid reloading the same url again
       if (self.loadedUrl === url) {
-        // console.log('url already loaded');
+        console.log('[Main] ' + url + ' already in DOM');
         self.hideSideNav();
 
         // Click the selected tab
         self.clickSelectedTab();
 
         // Dispatch the event
-        console.log('partial-shown-' + url);
-        document.dispatchEvent(new CustomEvent('partial-shown-' + url));
+        document.dispatchEvent(
+          new CustomEvent('partial-loaded:' + url)
+        );
+        document.dispatchEvent(
+          new CustomEvent('partial-not-fetched-and-loaded:' + url)
+        );
 
-        return true;
+        return;
       }
       self.loadedUrl = url;
 
@@ -190,7 +202,13 @@
           if (response.status === 200) {
             // response.text() is a Promise
             response.text().then(function(text) {
+              console.log('[Main] ' + url + ' fetched');
+              // Dispatch events
+              document.dispatchEvent(new CustomEvent('partial-fetched'));
+              document.dispatchEvent(new CustomEvent('partial-fetched:' + url));
+
               document.querySelector('.mdl-layout__content').innerHTML = text;
+              console.log('[Main] ' + url + ' loaded into DOM');
 
               // register newly added elements to DOM
               window.componentHandler.upgradeAllRegistered();
@@ -202,9 +220,18 @@
               self.clickSelectedTab();
 
               // Dispatch events
-              document.dispatchEvent(new CustomEvent('partial-fetched'));
-              document.dispatchEvent(new CustomEvent('partial-fetched-' + url));
-              document.dispatchEvent(new CustomEvent('partial-shown-' + url));
+              document.dispatchEvent(
+                new CustomEvent('partial-loaded')
+              );
+              document.dispatchEvent(
+                new CustomEvent('partial-loaded:' + url)
+              );
+              document.dispatchEvent(
+                new CustomEvent('partial-fetched-and-loaded')
+              );
+              document.dispatchEvent(
+                new CustomEvent('partial-fetched-and-loaded:' + url)
+              );
 
               return true;
             });
@@ -218,10 +245,17 @@
     };
 
     this.fetchProgramAndDisplay = function(url) {
+      // Check if program data is already in DOM
+      if (document.querySelector('.program-list li')) {
+        console.log('[Main] ' + url + ' already in DOM');
+        return;
+      }
+
       fetch(url)
         .then(function(response) {
           if (response.status === 200) {
             response.json().then(function(json) {
+              console.log('[Main] ' + url + ' fetched');
               var template;
               for (var i = 0; i - json.length; i++) {
                 template = document.querySelector('template').content;
@@ -269,6 +303,8 @@
                   document.importNode(template, true)
                 );
               }
+              console.log('[Main] ' + url + ' loaded into DOM');
+
               // register newly added elements to DOM
               window.componentHandler.upgradeAllRegistered();
 

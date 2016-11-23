@@ -281,6 +281,7 @@ gulp.task('copy-sw-scripts', () => {
   return gulp.src(
     [
       'node_modules/sw-toolbox/sw-toolbox.js',
+      'node_modules/sw-toolbox/sw-toolbox.js.map',
       'app/scripts/sw/runtime-caching.js',
       'app/scripts/sw/sw-push.js',
     ]
