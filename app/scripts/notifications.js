@@ -127,8 +127,10 @@
               }
             );
 
-            // Show switches
-            self.showSwitches();
+            // Show switches if online mode detected
+            if (navigator.onLine) {
+              self.showSwitches();
+            }
           })
           .catch(function(err) {
             console.warn('[Notifications] Error during ' +
