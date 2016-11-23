@@ -43,7 +43,7 @@
           {
             body: 'Notificación auto generada',
             icon: '/images/app-shell/master-icon.png',
-            badge: '/images/app-shell/master-icon.png'
+            badge: '/images/app-shell/master-icon.badge.png'
           }
         );
       }
