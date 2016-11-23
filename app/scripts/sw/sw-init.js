@@ -69,7 +69,6 @@
                       actionText: 'Recargar'
                     }
                   );
-
                   break;
 
                 case 'redundant':
