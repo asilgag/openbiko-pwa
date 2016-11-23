@@ -302,9 +302,9 @@
             }
 
             if (json[i].length === undefined) {
-              template.querySelector('.info').className += ' hidden';
+              template.querySelector('.length').className += ' hidden';
             } else {
-              template.querySelector('.info').className = 'info';
+              template.querySelector('.length').className = 'length';
             }
 
             document.querySelector('.program-list').appendChild(
