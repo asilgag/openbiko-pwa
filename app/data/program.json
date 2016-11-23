@@ -27,7 +27,7 @@
   {
     "id": "4",
     "title": "Atom vs PhpStorm, el editor definitivo",
-    "description": "Cómo he configurado mi atom y por que no necesito ninguna licencia de phpStorm... Ser un chico barato no cuesta tanto :P // Cómo no he perdido mi tiempo configurando PhpStorm y cómo el pago de su licencia es una de las mejores inversiones que puedes hacer como programador. Refactorizar código, testing e integración con otras herramientas con PhpStorm.",
+    "description": "Cómo he configurado mi atom y por qué no necesito ninguna licencia de phpStorm... Ser un chico barato no cuesta tanto :P // Cómo no he perdido mi tiempo configurando PhpStorm y cómo el pago de su licencia es una de las mejores inversiones que puedes hacer como programador. Refactorizar código, testing e integración con otras herramientas con PhpStorm.",
     "timestart": "09:10",
     "length": "45",
     "venue": "Sala compartida 2",
@@ -76,10 +76,10 @@
   },
   {
     "id": "9",
-    "title": "Computational design",
+    "title": "Computational design, hacia un diseño mestizo",
     "description": "Es un concepto sobre el que ahora está trabajando John Maeda: El computational design trata sobre los algoritmos, sobre cómo las personas interactúan con esos algoritmos y cómo esas personas se ven afectadas por una velocidad y escala debido al impacto que tienen la Ley de Moore en nuestro mundo.",
     "timestart": "10:50",
-    "length": "15",
+    "length": "45",
     "venue": "Sala compartida 1",
     "speaker": "karlos g liberal",
     "icon": "/images/programa/patxangas.jpg"
@@ -96,16 +96,6 @@
   },
   {
     "id": "11",
-    "title": "La última apuesta de Google: Physical Web",
-    "description": "Tras los iBeacon de Apple, Google apuesta con Eddystone por lo que se conoce como la Web Física o Physical web: una baliza que emite información, provocando que un móvil reaccione a su paso y reciba una URL, un enlace. Esta aparente pequeña evolución permite conectar de forma directa el mundo físico con las aplicaciones web y desencadenar la interacción del usuario en un site.",
-    "timestart": "11:05",
-    "length": "30",
-    "venue": "Sala compartida 1",
-    "speaker": "karlos g liberal",
-    "icon": "/images/programa/patxangas.jpg"
-  },
-  {
-    "id": "12",
     "title": "Cómo creamos un App que reconoce piezas de un catálogo de miles de referencias",
     "description": "Os contaremos como hemos desarrollado el App que soporta el catálogo online del fabricante de componentes de automoción NUCAP, donde el diferencial se basa en el sistema de reconocimiento de imagen que hemos desarrollado para asistiir a los clientes de NUCAP a localizar las referencias de los productos que necesitan.",
     "timestart": "11:05",
@@ -115,12 +105,13 @@
     "icon": "/images/programa/virgilio-echauri.jpg"
   },
   {
-    "id": "13",
+    "id": "12",
     "title": "DESCANSO",
-    "timestart": "11:35"
+    "timestart": "11:35",
+    "length": "30"
   },
   {
-    "id": "14",
+    "id": "13",
     "title": "El proceso de transformación digital del museo Thyssen-Bornemisza",
     "description": "Cómo está siendo el proyecto de transformación digital del museo Thyssen-Bornemisza, del que nos sentimos muy orgullosos de formar parte",
     "timestart": "12:15",
@@ -130,7 +121,7 @@
     "icon": "/images/programa/museo.png"
   },
   {
-    "id": "15",
+    "id": "14",
     "title": "Las claves de la transformación digital. ¿Qué podemos aprender de la experiencia del Grupo Prisa para nuestras empresas?",
     "description": "Chief Digital Transformation Officer en el grupo Prisa, que nos hablará de 'Las claves de la transformación digital. ¿Qué podemos aprender de la experiencia del Grupo Prisa para nuestras empresas?' ",
     "timestart": "13:30",
@@ -140,7 +131,7 @@
     "icon": "/images/programa/noelia.jpg"
   },
   {
-    "id": "16",
+    "id": "15",
     "title": "COCKTAIL",
     "timestart": "14:30"
   }
