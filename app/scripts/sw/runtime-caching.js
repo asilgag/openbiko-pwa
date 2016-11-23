@@ -37,6 +37,7 @@
   global.toolbox.precache(
     [
       '/',
+      '/index.html',
       '/programa',
       '/me-apunto',
       '/faq'
@@ -52,6 +53,9 @@
   // 2) Definir varios toolbox.router.get() por cada url que pongamos en toolbox.precache()
   // Me decanto por esta segunda opción para tenerla como referencia para el futuro
   global.toolbox.router.get('/', global.toolbox.fastest, {
+    origin: /\.(?:firebaseapp)\.(com)$/
+  });
+  global.toolbox.router.get('/index.html', global.toolbox.fastest, {
     origin: /\.(?:firebaseapp)\.(com)$/
   });
   global.toolbox.router.get('/programa', global.toolbox.fastest, {
