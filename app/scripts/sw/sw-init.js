@@ -99,6 +99,7 @@
 
         console.log('[Service Worker] Registration completed');
         // Dispatch registration event (mainly for push notifications)
+
         document.dispatchEvent(
           new CustomEvent('service-worker-registered')
         );

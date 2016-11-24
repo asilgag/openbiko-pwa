@@ -10,11 +10,13 @@
     // Display program images when json has loaded
     document.addEventListener('json-loaded', function() {
       var jsonImages = document.querySelectorAll('.program-list img');
-      jsonImages.forEach(function(item) {
-        item.addEventListener('load', function(e) {
+      for (var i = 0; i < jsonImages.length; i++) {
+        jsonImages[i].style.opacity = 0;
+        jsonImages[i].addEventListener('load', function(e) {
           e.target.style.opacity = 1;
+          e.target.style.filter = 'alpha(opacity=100)';
         });
-      });
+      }
     });
 
     document.addEventListener('partial-loaded', function() {
@@ -23,23 +25,25 @@
 
       // Display content images when partial has loaded
       var contentImages = document.querySelectorAll('.mdl-layout__content img');
-      contentImages.forEach(function(item) {
-        item.addEventListener('load', function(e) {
+      for (var x = 0; x < contentImages.length; x++) {
+        contentImages[x].style.opacity = 0;
+        contentImages[x].addEventListener('load', function(e) {
           e.target.style.opacity = 1;
+          e.target.style.filter = 'alpha(opacity=100)';
         });
-      });
+      }
 
       // Set events for click-on-target
       var clickOnTargetLinks = document.querySelectorAll('.click-on-target');
-      clickOnTargetLinks.forEach(function(item) {
-        item.addEventListener(
+      for (var z = 0; z < clickOnTargetLinks.length; z++) {
+        clickOnTargetLinks[z].addEventListener(
           'click',
           function(e) {
             var targetHref = e.target.parentElement.getAttribute('data-target');
             self.locationBar.update(targetHref, {trigger: true});
           }
         );
-      });
+      }
 
       /* email submit */
       var submit = document.getElementById('submit');
@@ -68,37 +72,59 @@
       var LocationBar = require('location-bar');
       self.locationBar = new LocationBar();
 
-      // listen to all changes to the location bar
-      self.locationBar.onChange(function(path) {
-        console.log('the current url is', path);
+      /*
+       // home
+       self.locationBar.route(/^\/?$/, function() {
+       console.log('[LocationBar] /');
+       self.selectorToClick = '.mdl-tabs__tab[href="#anyos"]';
+       self.fetchUrlAndDisplay('partials/home.html');
+       });
+
+       // programa
+       self.locationBar.route(/^\/?programa/, function() {
+       console.log('[LocationBar] /programa');
+       self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
+       self.fetchUrlAndDisplay('partials/home.html');
+       });
+
+       // me apunto
+       self.locationBar.route(/^\/?me\-apunto/, function() {
+       console.log('[LocationBar] /me-apunto');
+       self.selectorToClick = '.mdl-tabs__tab[href="#me-apunto"]';
+       self.fetchUrlAndDisplay('partials/home.html');
+       });
+
+       // faq
+       self.locationBar.route(/^\/?faq/, function() {
+       console.log('[LocationBar] /faq');
+       self.selectorToClick = null;
+       self.fetchUrlAndDisplay('partials/faq.html');
+       });
+       */
+      self.locationBar.route(/.*/, function(path) {
+        console.log('[LocationBar] captured path:', path);
+        if (path.indexOf('programa') > -1) {
+          console.log('[LocationBar] matched path /programa');
+          self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
+          self.fetchUrlAndDisplay('partials/home.html');
+        } else if (path.indexOf('me-apunto') > -1) {
+          console.log('[LocationBar] matched path /me-apunto');
+          self.selectorToClick = '.mdl-tabs__tab[href="#me-apunto"]';
+          self.fetchUrlAndDisplay('partials/home.html');
+        } else if (path.indexOf('faq') > -1) {
+          console.log('[LocationBar] matched path /faq');
+          self.selectorToClick = null;
+          self.fetchUrlAndDisplay('partials/faq.html');
+        } else {
+          console.log('[LocationBar] matched path /');
+          self.selectorToClick = '.mdl-tabs__tab[href="#anyos"]';
+          self.fetchUrlAndDisplay('partials/home.html');
+        }
       });
 
-      // home
-      self.locationBar.route(/^\/?$/, function() {
-        console.log('[LocationBar] /');
-        self.selectorToClick = '.mdl-tabs__tab[href="#anyos"]';
-        self.fetchUrlAndDisplay('partials/home.html');
-      });
-
-      // programa
-      self.locationBar.route(/^\/?programa/, function() {
-        console.log('[LocationBar] /programa');
-        self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
-        self.fetchUrlAndDisplay('partials/home.html');
-      });
-
-      // me apunto
-      self.locationBar.route(/^\/?me\-apunto/, function() {
-        console.log('[LocationBar] /me-apunto');
-        self.selectorToClick = '.mdl-tabs__tab[href="#me-apunto"]';
-        self.fetchUrlAndDisplay('partials/home.html');
-      });
-
-      // faq
-      self.locationBar.route(/^\/?faq/, function() {
-        console.log('[LocationBar] /faq');
-        self.selectorToClick = null;
-        self.fetchUrlAndDisplay('partials/faq.html');
+      // Init locationBar
+      self.locationBar.start({
+        pushState: true
       });
 
       // programa json event listener
@@ -111,49 +137,47 @@
 
       // Side nav events
       var navLinks = document.querySelectorAll('.mdl-navigation__link');
-      navLinks.forEach(function(item) {
-        item.addEventListener(
-          'click',
-          function(e) {
-            e.preventDefault();
-            var href = e.target.getAttribute('href');
-            if (href === document.location.pathname) {
-              self.hideSideNav();
-            } else {
-              self.locationBar.update(href, {trigger: true});
-            }
-          }
-        );
-      });
+      for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', self.sideNavClickEvent);
+      }
 
       document.addEventListener(
         'partial-fetched-and-loaded:partials/home.html',
-        function() {
-          // Add events to tabs when loaded
-          // We use a different selector
-          // from fetchUrlAndDisplay to avoid infinite loops
-          var tabLinks = document.querySelectorAll(
-            'a.mdl-tabs__tab .mdl-tabs__ripple-container'
-          );
-          tabLinks.forEach(function(item) {
-            item.addEventListener(
-              'click',
-              function(e) {
-                var href = e.target.parentElement.getAttribute('href');
-                href = href.replace('#', '');
-                href = href.replace('anyos', '');
-                self.locationBar.update('/' + href, {trigger: true});
-              }
-            );
-          });
-          console.log('[Main] Events attached to tabs');
-        }
+        self.attachEventsToTabs
       );
+    };
 
-      // Init locationBar
-      self.locationBar.start({
-        pushState: true
-      });
+    this.sideNavClickEvent = function(e) {
+      e.preventDefault();
+      var href = e.target.getAttribute('href');
+      if (href === document.location.pathname) {
+        self.hideSideNav();
+      } else {
+        self.locationBar.update(href, {trigger: true});
+      }
+    };
+
+    this.attachEventsToTabs = function() {
+      // Add events to tabs when loaded
+      // We use a different selector
+      // from fetchUrlAndDisplay to avoid infinite loops
+      var tabLinks = document.querySelectorAll(
+        'a.mdl-tabs__tab .mdl-tabs__ripple-container'
+      );
+      // Tengto que definir aqui la funcion del evento click, ya que
+      // si lo saco a una función no funciona
+      for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].addEventListener(
+          'click',
+          function(e) {
+            var href = e.target.parentElement.getAttribute('href');
+            href = href.replace('#', '');
+            href = href.replace('anyos', '');
+            self.locationBar.update('/' + href, {trigger: true});
+          }
+        );
+      }
+      console.log('[Main] Events attached to tabs');
     };
 
     this.clickSelectedTab = function() {
