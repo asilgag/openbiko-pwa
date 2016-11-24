@@ -79,13 +79,13 @@
             );
 
             window.addEventListener('offline', function() {
-              console.log('[Notifications] Offline mode detected');
+              console.log('[Notifications] Offline event captured');
               self.hideSwitches();
               self.showSnackBar('Sin conexión. Notificaciones desactivadas');
             });
 
             window.addEventListener('online', function() {
-              console.log('[Notifications] Online mode detected');
+              console.log('[Notifications] Online event captured');
               self.showSwitches();
               self.showSnackBar('De nuevo online. Notificaciones restauradas');
             });
@@ -129,7 +129,17 @@
 
             // Show switches if online mode detected
             if (navigator.onLine) {
+              console.log(
+                '[Notifications] Online mode detected. navigator.onLine:',
+                navigator.onLine
+              );
               self.showSwitches();
+            } else {
+              console.log(
+                '[Notifications] Offline mode detected. navigator.onLine:',
+                navigator.onLine
+              );
+              self.hideSwitches();
             }
           })
           .catch(function(err) {
@@ -144,7 +154,7 @@
       // Are service workers supported?
       if (!('ServiceWorkerRegistration' in window)) {
         console.warn('[Notifications] Service Workers aren\'t supported.');
-        self.showSnackBar('Notificaciones Web Push no soportadas');
+        self.showSnackBar('Notificaciones Web Push no soportadas', 5000);
         return false;
       }
 
