@@ -2,17 +2,6 @@
 
 (function() {
   'use strict';
-  /*
-   // Are Notifications supported in the service worker?
-   if (!('ServiceWorkerRegistration' in window)) {
-   alert('[Notifications] Notifications aren\'t supported1.');
-   }
-
-   // Check if push messaging is supported
-   if (!('PushManager' in window)) {
-   alert('[Notifications] Push messaging isn\'t supported2.');
-   }
-   */
 
   /** Main app */
   function OpenBikoPWA() {
