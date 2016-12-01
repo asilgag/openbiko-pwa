@@ -1,19 +1,25 @@
 /* eslint-env browser */
 (function() {
   'use strict';
-/*
+
+  /*
   var remoteStyles = [
-    'http://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+    'http://fonts.googleapis.com/css?family=Roboto:300,500,700',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://code.getmdl.io/1.2.1/material.red-blue.min.css',
     'styles/main.css'
   ];
 
-  // Asynchronously load CSS with a Request Animation Frame
+  var remoteScripts = [
+    'https://code.getmdl.io/1.2.1/material.min.js'
+  ];
+
+    // Asynchronously load CSS with a Request Animation Frame
   // For older browser support see this for a simple shim
   // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
   window.requestAnimationFrame(function() {
     var elementToInsertLinkBefore = document.getElementsByTagName('script')[0];
+    // Styles
     for (var i = 0; i < remoteStyles.length; i++) {
       var linkElement = document.createElement('link');
       linkElement.rel = 'stylesheet';
@@ -25,8 +31,20 @@
         elementToInsertLinkBefore
       );
     }
+
+    // Scripts
+    for (var x = 0; x < remoteScripts.length; x++) {
+      var scriptElement = document.createElement('script');
+      scriptElement.src = remoteScripts[x];
+      scriptElement.async = 'async';
+
+      elementToInsertLinkBefore.parentNode.insertBefore(
+        scriptElement,
+        elementToInsertLinkBefore
+      );
+    }
   });
-*/
+  */
 
   // Share links
   var goToLink = function(e) {

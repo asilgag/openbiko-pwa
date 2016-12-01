@@ -103,21 +103,17 @@
        */
       self.locationBar.route(/.*/, function(path) {
         console.log('[LocationBar] captured path:', path);
-        if (path.indexOf('programa') > -1) {
-          console.log('[LocationBar] matched path /programa');
-          self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
-          self.fetchUrlAndDisplay('partials/home.html');
-        } else if (path.indexOf('me-apunto') > -1) {
-          console.log('[LocationBar] matched path /me-apunto');
-          self.selectorToClick = '.mdl-tabs__tab[href="#me-apunto"]';
+        if (path.indexOf('hace-10-anyos') > -1) {
+          console.log('[LocationBar] matched path /hace-10-anyos');
+          self.selectorToClick = '.mdl-tabs__tab[href="#hace-10-anyos"]';
           self.fetchUrlAndDisplay('partials/home.html');
         } else if (path.indexOf('faq') > -1) {
           console.log('[LocationBar] matched path /faq');
-          self.selectorToClick = null;
-          self.fetchUrlAndDisplay('partials/faq.html');
+          self.selectorToClick = '.mdl-tabs__tab[href="#faq"]';
+          self.fetchUrlAndDisplay('partials/home.html');
         } else {
           console.log('[LocationBar] matched path /');
-          self.selectorToClick = '.mdl-tabs__tab[href="#anyos"]';
+          self.selectorToClick = '.mdl-tabs__tab[href="#programa"]';
           self.fetchUrlAndDisplay('partials/home.html');
         }
       });
@@ -172,7 +168,7 @@
           function(e) {
             var href = e.target.parentElement.getAttribute('href');
             href = href.replace('#', '');
-            href = href.replace('anyos', '');
+            href = href.replace('programa', '');
             self.locationBar.update('/' + href, {trigger: true});
           }
         );

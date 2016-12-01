@@ -38,8 +38,7 @@
     [
       '/',
       '/index.html',
-      '/programa',
-      '/me-apunto',
+      '/hace-10-anyos',
       '/faq'
     ]
   );
@@ -49,7 +48,7 @@
   // pero luego no son servidas.
   // Hay dos soluciones posibles:
   // 1) No definir ningún origin y cachear todos los recursos externos sin control
-  // (útil en la mayoría de los casos)
+  // (útil en la mayoría de los casos pero problemático con Analytics)
   // 2) Definir varios toolbox.router.get() por cada url que pongamos en toolbox.precache()
   // Me decanto por esta segunda opción para tenerla como referencia para el futuro
   global.toolbox.router.get('/', global.toolbox.fastest, {
@@ -58,10 +57,7 @@
   global.toolbox.router.get('/index.html', global.toolbox.fastest, {
     origin: /\.(?:firebaseapp)\.(com)$/
   });
-  global.toolbox.router.get('/programa', global.toolbox.fastest, {
-    origin: /\.(?:firebaseapp)\.(com)$/
-  });
-  global.toolbox.router.get('/me-apunto', global.toolbox.fastest, {
+  global.toolbox.router.get('/hace-10-anyos', global.toolbox.fastest, {
     origin: /\.(?:firebaseapp)\.(com)$/
   });
   global.toolbox.router.get('/faq', global.toolbox.fastest, {

@@ -11,7 +11,7 @@
     "description": "Me gustaría contaros mi experiencia con estas dos herramientas, basándome en lo que he aprendido siguiendo estos dos cursos: Diseño de Interfaces con Sketch (http://www.domestika.org/es/courses/95-diseno-de-interfaces-con-sketch/course) y Design Workflow with Sketch (https://www.invisionapp.com/ecourses/design-workflow-with-sketch).",
     "timestart": "09:10",
     "length": "45",
-    "venue": "Sala Carpa",
+    "venue": "Sala  Barquilleros 1",
     "speaker": "Aritz Oiaga",
     "icon": "/images/programa/aritz-oiaga.jpg"
   },
@@ -21,7 +21,7 @@
     "description": "Os contaremos como hemos diseñado e implementado el sistema de integración escalable y tolerante a fallos que permite que los pedidos realizados desde el e-commerce de Rodilla lleguen a las cocinas de cada restaurante.",
     "timestart": "09:10",
     "length": "45",
-    "venue": "Sala Barquilleros 1",
+    "venue": "Sala Barquilleros 2",
     "speaker": "Virgilio Echauri y Carmelo M.",
     "icon": "/images/programa/virgilio-echauri.jpg"
   },
@@ -31,7 +31,7 @@
     "description": "Cómo he configurado mi atom y por qué no necesito ninguna licencia de phpStorm... Ser un chico barato no cuesta tanto :P // Cómo no he perdido mi tiempo configurando PhpStorm y cómo el pago de su licencia es una de las mejores inversiones que puedes hacer como programador. Refactorizar código, testing e integración con otras herramientas con PhpStorm.",
     "timestart": "09:10",
     "length": "45",
-    "venue": "Sala Barquilleros 2",
+    "venue": "Sala Carpa",
     "speaker": "David Gallego y Pablo Albizu",
     "icon": "/images/programa/gallego-pablo.jpg"
   },
@@ -41,7 +41,7 @@
     "description": "Os contamos el proyecto que preparamos para atraer clientes a varias tiendas físicas de un cliente en Perú, y fidelizarlos después, todo ello a través un plan de acciones online. El proyecto todavía no se ha realizado, pero contenía acciones concretas, buenas ideas y ejemplos claros de utilización del online para repercutir en el offline.",
     "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Carpa",
+    "venue": "Sala Barquilleros 1",
     "speaker": "Juan Narro y Wila",
     "icon": "/images/programa/narro-wila.jpg"
   },
@@ -51,7 +51,7 @@
     "description": "El futuro de la web móvil ya llegó y se llama Progressive Web Apps. Sites normales que se autoinstalan en el móvil y emulan el funcionamiento de una aplicación nativa: icono en el home screen, carga instantánea,funcionamiento offline, notificaciones push, etc. Hablaremos del nuevo mercado al que nos abren y de cómo las desarrollamos: app shell, service workers, manifest.json, critical rendering path y notificaciones.",
     "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Barquilleros 1",
+    "venue": "Sala Barquilleros 2",
     "speaker": "Alberto Silva",
     "icon": "/images/programa/alberto-silva.jpg"
   },
@@ -61,7 +61,7 @@
     "description": "Después de leernos el libro 'Working effectively with legacy code', explicaremos algunos ejemplos chulos que explican en el libro sobre como trabajar con código legado, introducir testing y limpiar el código. Teórica y también práctica ya que entraremos a ver ejemplos en código.",
     "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Barquilleros 2",
+    "venue": "Sala Carpa",
     "speaker": "540",
     "icon": "/images/programa/540.png"
   },
@@ -71,7 +71,7 @@
     "description": "Cómo convertir una landing en un imán para generar leads. Desde cómo reducir la fricción en la página, hasta cómo utilizar la psicología, redactar los copys, ubicar los elementos, colocar los CTA o elegir las imágenes que lleven al usuario a cambiar su decisión y clicar en ese maldito botón.",
     "timestart": "10:50",
     "length": "45",
-    "venue": "Sala Carpa",
+    "venue": "Sala Barquilleros 1",
     "speaker": "Susana Heredia y Aritz Oiaga",
     "icon": "/images/programa/susana-oiaga.jpg"
   },
@@ -81,7 +81,7 @@
     "description": "Es un concepto sobre el que ahora está trabajando John Maeda: El computational design trata sobre los algoritmos, sobre cómo las personas interactúan con esos algoritmos y cómo esas personas se ven afectadas por una velocidad y escala debido al impacto que tienen la Ley de Moore en nuestro mundo.",
     "timestart": "10:50",
     "length": "45",
-    "venue": "Sala Barquilleros 1",
+    "venue": "Sala Barquilleros 2",
     "speaker": "karlos g liberal",
     "icon": "/images/programa/patxangas.jpg"
   },
@@ -91,7 +91,7 @@
     "description": "Desde hace ya mucho tiempo existe una alternativa a los float para maquetar los layouts de nuestros proyectos. Da solución a muchos de los problemas habituales en maquetación, simplifica el código y tendremos un código preparado para el futuro. Os enseñaré que puede hacer esta característica de CSS3 en ejemplos reales de proyectos hechos en Biko",
     "timestart": "10:50",
     "length": "15",
-    "venue": "Sala Barquilleros 2",
+    "venue": "Sala Carpa",
     "speaker": "Rubén Bernárdez",
     "icon": "/images/programa/ruben-bernardez.jpg"
   },
@@ -101,7 +101,7 @@
     "description": "Os contaremos como hemos desarrollado el App que soporta el catálogo online del fabricante de componentes de automoción NUCAP, donde el diferencial se basa en el sistema de reconocimiento de imagen que hemos desarrollado para asistiir a los clientes de NUCAP a localizar las referencias de los productos que necesitan.",
     "timestart": "11:15",
     "length": "30",
-    "venue": "Sala Barquilleros 2",
+    "venue": "Sala Carpa",
     "speaker": "Virgilio Echauri y Carmelo M.",
     "icon": "/images/programa/virgilio-echauri.jpg"
   },

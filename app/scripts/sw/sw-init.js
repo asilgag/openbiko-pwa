@@ -38,13 +38,20 @@
     console.log('[Service Worker] Registration starts.');
     navigator.serviceWorker.register('service-worker.js')
       .then(function(registration) {
+        // Log Service Worker Lifecycle
+        // https://bitsofco.de/the-service-worker-lifecycle/
+        console.log('[Service Worker] State: parsed');
+
         // updatefound is fired if service-worker.js changes.
         registration.onupdatefound = function() {
+          console.log('[Service Worker] New Service Service Worker found');
+          console.log('[Service Worker] State: installing');
           // updatefound is also fired the very first time the SW is installed,
           // and there's no need to prompt for a reload at that point.
           // So check here to see if the page is already controlled,
           // i.e. whether there's an existing service worker.
           if (navigator.serviceWorker.controller) {
+            console.log('[Service Worker] Previous Service Worker found');
             // The updatefound event implies that registration.installing is set:
             // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
             var installingWorker = registration.installing;
@@ -52,6 +59,7 @@
             installingWorker.onstatechange = function() {
               switch (installingWorker.state) {
                 case 'installed':
+                  console.log('[Service Worker] State: installed / waiting ');
                   // At this point, the old content will have been purged and the
                   // fresh content will have been added to the cache.
                   // It's the perfect time to display a "New content is
@@ -61,8 +69,8 @@
                   var snackbarContainer = document.getElementById('snackbar');
                   snackbarContainer.MaterialSnackbar.showSnackbar(
                     {
-                      message: 'Hay nuevo contenido disponible',
-                      timeout: 10000,
+                      message: 'Nueva actualización disponible',
+                      timeout: 100000,
                       actionHandler: function() {
                         document.location.reload();
                       },
@@ -80,12 +88,13 @@
               }
             };
           } else {
+            console.log('[Service Worker] Previous Service Worker not found');
             console.log('[Service Worker] Caching complete! ' +
               'Future visits will work offline.');
             var snackbarContainer = document.getElementById('snackbar');
             snackbarContainer.MaterialSnackbar.showSnackbar(
               {
-                message: 'Preparado para trabajar offline',
+                message: 'Preparado para modo offline',
                 timeout: 5000,
                 actionHandler: function() {
                   var snackBar = document.querySelector('#snackbar');
