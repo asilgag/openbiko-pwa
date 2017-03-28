@@ -3,18 +3,18 @@
     "short_name": "OpenBiko",
     "icons": [
         {
-            "src": "\/images\/touch\/android-chrome-192x192.png",
+            "src": "/images/touch/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": "image\/png"
+            "type": "image/png"
         },
         {
-            "src": "\/images\/touch\/android-chrome-384x384.png",
+            "src": "/images/touch/android-chrome-384x384.png",
             "sizes": "384x384",
-            "type": "image\/png"
+            "type": "image/png"
         }
     ],
-    "start_url": "\/",
+    "start_url": "/",
     "display": "standalone",
-    "background_color": "#3E4EB8",
+    "background_color": "#a20b00",
     "theme_color": "#a20b00"
 }

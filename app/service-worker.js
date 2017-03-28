@@ -10,3 +10,4 @@
 // Import push service worker in development mode
 importScripts("scripts/sw/sw-push.js");
 
+
