@@ -1,153 +1,102 @@
 [
   {
     "id": "1",
-    "title": "APERTURA XII OPEN BIKO",
-    "timestart": "09:00",
-    "venue": "Hotel Pamplona Catedral"
+    "title": "APERTURA XIII OPEN BIKO",
+    "timestart": "10:00",
+    "venue": "Navarra Factori, Cein"
   },
   {
     "id": "2",
-    "title": "Trabajando con Sketch e Invisión",
-    "description": "Me gustaría contaros mi experiencia con estas dos herramientas, basándome en lo que he aprendido siguiendo estos dos cursos: Diseño de Interfaces con Sketch (http://www.domestika.org/es/courses/95-diseno-de-interfaces-con-sketch/course) y Design Workflow with Sketch (https://www.invisionapp.com/ecourses/design-workflow-with-sketch).",
-    "timestart": "09:10",
+    "title": "eSports, un nuevo negocio digital",
+    "timestart": "10:00",
     "length": "45",
-    "venue": "Sala  Barquilleros 1",
-    "speaker": "Aritz Oiaga",
-    "icon": "/images/programa/aritz-oiaga.jpg"
+    "venue": "Sal-on",
+    "speaker": "Ismael Liberal y Karlos G Liberal",
+    "icon": "/images/programa/ismael-patxangas.jpg"
   },
   {
     "id": "3",
-    "title": "Cómo creamos un e-commerce para el sector de la restauración",
-    "description": "Os contaremos como hemos diseñado e implementado el sistema de integración escalable y tolerante a fallos que permite que los pedidos realizados desde el e-commerce de Rodilla lleguen a las cocinas de cada restaurante.",
-    "timestart": "09:10",
+    "title": "Sketch para principiantes",
+    "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Barquilleros 2",
-    "speaker": "Virgilio Echauri y Carmelo M.",
-    "icon": "/images/programa/virgilio-echauri.jpg"
+    "venue": "Sala Open Innovation",
+    "speaker": "Aritz Oiaga y Amaya Eguizábal",
+    "icon": "/images/programa/aritz-amaya.jpg"
   },
   {
     "id": "4",
-    "title": "Atom vs PhpStorm, el editor definitivo",
-    "description": "Cómo he configurado mi atom y por qué no necesito ninguna licencia de phpStorm... Ser un chico barato no cuesta tanto :P // Cómo no he perdido mi tiempo configurando PhpStorm y cómo el pago de su licencia es una de las mejores inversiones que puedes hacer como programador. Refactorizar código, testing e integración con otras herramientas con PhpStorm.",
-    "timestart": "09:10",
+    "title": "Primeros pinitos con Vue.js",
+    "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Carpa",
-    "speaker": "David Gallego y Pablo Albizu",
-    "icon": "/images/programa/gallego-pablo.jpg"
+    "venue": "Sala Naranja",
+    "speaker": "Pablo Albizu y Gorka Moreno (540)",
+    "icon": "/images/programa/gorka-pablo.jpg"
   },
   {
     "id": "5",
-    "title": "Conectando el online con el offline en una experiencia omnicanal. 3 casos: Carrefour, Movistar y Museo Guggenheim",
-    "description": "Os contamos el proyecto que preparamos para atraer clientes a varias tiendas físicas de un cliente en Perú, y fidelizarlos después, todo ello a través un plan de acciones online. El proyecto todavía no se ha realizado, pero contenía acciones concretas, buenas ideas y ejemplos claros de utilización del online para repercutir en el offline.",
-    "timestart": "10:00",
-    "length": "45",
-    "venue": "Sala Barquilleros 1",
-    "speaker": "Juan Narro y Wila",
-    "icon": "/images/programa/narro-wila.jpg"
+    "title": "Receteitor",
+    "timestart": "10:50",
+    "length": "15",
+    "venue": "Sal-on",
+    "speaker": "Karlos G Liberal",
+    "icon": "/images/programa/patxangas.jpg"
   },
   {
     "id": "6",
-    "title": "El futuro de la web móvil: Progressive Web Apps",
-    "description": "El futuro de la web móvil ya llegó y se llama Progressive Web Apps. Sites normales que se autoinstalan en el móvil y emulan el funcionamiento de una aplicación nativa: icono en el home screen, carga instantánea,funcionamiento offline, notificaciones push, etc. Hablaremos del nuevo mercado al que nos abren y de cómo las desarrollamos: app shell, service workers, manifest.json, critical rendering path y notificaciones.",
-    "timestart": "10:00",
+    "title": "Behat + Symfony",
+    "timestart": "10:50",
+    "length": "15",
+    "venue": "Sala Open Innovation",
+    "speaker": "Pablo Albizu (540)",
+    "icon": "/images/programa/pablo-albizu.jpg"
+  },
+  {
+    "id": "7",
+    "title": "Formaciones (debate sobre cómo las preparamos)",
+    "timestart": "10:50",
+    "length": "15",
+    "venue": "Sala Naranja",
+    "speaker": "Moderador: Aritz Suescun",
+    "icon": "/images/programa/aritz-suescun.jpg"
+  },
+  {
+    "id": "8",
+    "title": "ALMUERZO",
+    "timestart": "11:10",
+    "length": "25",
+    "venue": "Navarra Factori, Cein"},
+  {
+    "id": "9",
+    "title": "Update de tecnologías molonas",
+    "timestart": "11:40",
     "length": "45",
-    "venue": "Sala Barquilleros 2",
+    "venue": "Sal-on",
+    "speaker": "Susana Heredia",
+    "icon": "/images/programa/susana.jpg"
+  },
+  {
+    "id": "10",
+    "title": "Metadatos en nuestros contenidos",
+    "timestart": "11:40",
+    "length": "45",
+    "venue": "Sala Open Innovation",
+    "speaker": "David Gil",
+    "icon": "/images/programa/david-gil.jpg"
+  },
+  {
+    "id": "11",
+    "title": "Validación de formularios en Angular 2 y en React con Redux Form",
+    "timestart": "11:40",
+    "length": "45",
+    "venue": "Sala Naranja",
     "speaker": "Alberto Silva",
     "icon": "/images/programa/alberto-silva.jpg"
   },
   {
-    "id": "7",
-    "title": "Cómo trabajar con código legado",
-    "description": "Después de leernos el libro 'Working effectively with legacy code', explicaremos algunos ejemplos chulos que explican en el libro sobre como trabajar con código legado, introducir testing y limpiar el código. Teórica y también práctica ya que entraremos a ver ejemplos en código.",
-    "timestart": "10:00",
-    "length": "45",
-    "venue": "Sala Carpa",
-    "speaker": "540",
-    "icon": "/images/programa/540.png"
-  },
-  {
-    "id": "8",
-    "title": "Triplica la conversión de tu landing page",
-    "description": "Cómo convertir una landing en un imán para generar leads. Desde cómo reducir la fricción en la página, hasta cómo utilizar la psicología, redactar los copys, ubicar los elementos, colocar los CTA o elegir las imágenes que lleven al usuario a cambiar su decisión y clicar en ese maldito botón.",
-    "timestart": "10:50",
-    "length": "45",
-    "venue": "Sala Barquilleros 1",
-    "speaker": "Susana Heredia y Aritz Oiaga",
-    "icon": "/images/programa/susana-oiaga.jpg"
-  },
-  {
-    "id": "9",
-    "title": "Computational design, hacia un diseño mestizo",
-    "description": "Es un concepto sobre el que ahora está trabajando John Maeda: El computational design trata sobre los algoritmos, sobre cómo las personas interactúan con esos algoritmos y cómo esas personas se ven afectadas por una velocidad y escala debido al impacto que tienen la Ley de Moore en nuestro mundo.",
-    "timestart": "10:50",
-    "length": "45",
-    "venue": "Sala Barquilleros 2",
-    "speaker": "karlos g liberal",
-    "icon": "/images/programa/patxangas.jpg"
-  },
-  {
-    "id": "10",
-    "title": "Adios float, hola Flex Box! Maquetación de layouts para los navegadores de hoy",
-    "description": "Desde hace ya mucho tiempo existe una alternativa a los float para maquetar los layouts de nuestros proyectos. Da solución a muchos de los problemas habituales en maquetación, simplifica el código y tendremos un código preparado para el futuro. Os enseñaré que puede hacer esta característica de CSS3 en ejemplos reales de proyectos hechos en Biko",
-    "timestart": "10:50",
-    "length": "15",
-    "venue": "Sala Carpa",
-    "speaker": "Rubén Bernárdez",
-    "icon": "/images/programa/ruben-bernardez.jpg"
-  },
-  {
-    "id": "11",
-    "title": "Cómo creamos un App que reconoce piezas de un catálogo de miles de referencias",
-    "description": "Os contaremos como hemos desarrollado el App que soporta el catálogo online del fabricante de componentes de automoción NUCAP, donde el diferencial se basa en el sistema de reconocimiento de imagen que hemos desarrollado para asistiir a los clientes de NUCAP a localizar las referencias de los productos que necesitan.",
-    "timestart": "11:15",
-    "length": "30",
-    "venue": "Sala Carpa",
-    "speaker": "Virgilio Echauri y Carmelo M.",
-    "icon": "/images/programa/virgilio-echauri.jpg"
-  },
-  {
     "id": "12",
-    "title": "DESCANSO",
-    "timestart": "11:35",
-    "length": "30",
-    "venue": "Sala Carpa"
-  },
-  {
-    "id": "13",
-    "title": "El proceso de transformación digital del museo Thyssen-Bornemisza",
-    "description": "Cómo está siendo el proyecto de transformación digital del museo Thyssen-Bornemisza, del que nos sentimos muy orgullosos de formar parte",
-    "timestart": "12:15",
-    "length": "60",
-    "venue": "Sala Capilla",
-    "speaker": "Museo Thyssen-Bornemisza",
-    "icon": "/images/programa/museo.png"
-  },
-  {
-    "id": "14",
-    "title": "Las claves de la transformación digital. ¿Qué podemos aprender de la experiencia del Grupo Prisa para nuestras empresas?",
-    "description": "Chief Digital Transformation Officer en el grupo Prisa, que nos hablará de 'Las claves de la transformación digital. ¿Qué podemos aprender de la experiencia del Grupo Prisa para nuestras empresas?' ",
-    "timestart": "13:30",
-    "length": "60",
-    "venue": "Sala Capilla",
-    "speaker": "Noelia Fernández",
-    "icon": "/images/programa/noelia.jpg"
-  },
-  {
-    "id": "15",
-    "title": "COCKTAIL",
-    "timestart": "15:00",
-    "venue": "Sala Carpa"
-  },
-  {
-    "id": "16",
-    "title": "Taller de Risoterapia",
-    "timestart": "17:00",
-    "venue": "Sala Capilla"
-  },
-  {
-    "id": "17",
-    "title": "FIESTA",
-    "timestart": "19:00",
-    "venue": "Bar Txintxarri"
+    "title": "Propuesta y votación de charlas para las siguientes dos horas",
+    "timestart": "12:30",
+    "length": "20",
+    "venue": "Navarra Factori, Cein"
   }
 ]
