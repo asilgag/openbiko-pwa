@@ -15,22 +15,22 @@
     "icon": "/images/programa/ismael-patxangas.jpg"
   },
   {
-    "id": "3",
-    "title": "Sketch para principiantes",
-    "timestart": "10:00",
-    "length": "45",
-    "venue": "Sala Open Innovation",
-    "speaker": "Aritz Oiaga y Amaya Eguizábal",
-    "icon": "/images/programa/aritz-amaya.jpg"
-  },
-  {
     "id": "4",
     "title": "Primeros pinitos con Vue.js",
     "timestart": "10:00",
     "length": "45",
-    "venue": "Sala Naranja",
+    "venue": "Sala Open Innovation",
     "speaker": "Pablo Albizu y Gorka Moreno (540)",
     "icon": "/images/programa/gorka-pablo.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Sketch para principiantes",
+    "timestart": "10:00",
+    "length": "45",
+    "venue": "Sala Naranja",
+    "speaker": "Aritz Oiaga y Amaya Eguizábal",
+    "icon": "/images/programa/aritz-amaya.jpg"
   },
   {
     "id": "5",
@@ -64,24 +64,25 @@
     "title": "ALMUERZO",
     "timestart": "11:10",
     "length": "25",
-    "venue": "Navarra Factori, Cein"},
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "10",
+    "title": "Google y los datos estructurados",
+    "timestart": "11:40",
+    "length": "45",
+    "venue": "Sal-on",
+    "speaker": "David Gil",
+    "icon": "/images/programa/david-gil.jpg"
+  },
   {
     "id": "9",
     "title": "Update de tecnologías molonas",
     "timestart": "11:40",
     "length": "45",
-    "venue": "Sal-on",
+    "venue": "Sala Open Innovation",
     "speaker": "Susana Heredia",
     "icon": "/images/programa/susana.jpg"
-  },
-  {
-    "id": "10",
-    "title": "Metadatos en nuestros contenidos",
-    "timestart": "11:40",
-    "length": "45",
-    "venue": "Sala Open Innovation",
-    "speaker": "David Gil",
-    "icon": "/images/programa/david-gil.jpg"
   },
   {
     "id": "11",
@@ -95,7 +96,14 @@
   {
     "id": "12",
     "title": "Propuesta y votación de charlas para las siguientes dos horas",
-    "timestart": "12:30",
+    "timestart": "12:25",
+    "length": "20",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "13",
+    "title": "Retrospectiva y cierre del Open Biko",
+    "timestart": "14:40",
     "length": "20",
     "venue": "Navarra Factori, Cein"
   }
