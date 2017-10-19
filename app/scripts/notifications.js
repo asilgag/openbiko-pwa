@@ -55,6 +55,8 @@
       self.applicationServerKey = self.urlB64ToUint8Array(self.publicKey);
 
       if (self.arePushNotificationsAvailable()) {
+        // TODO Evitamos los switches de momento
+        return false;
         document.addEventListener(
           'service-worker-registered',
           function() {

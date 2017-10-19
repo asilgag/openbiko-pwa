@@ -288,12 +288,12 @@
               json[i].venue;
             template.querySelector('.speaker').textContent =
               json[i].speaker;
-            if (json[i].icon === undefined) {
+           /* if (json[i].icon === undefined) {
               template.querySelector('.icon').src = '';
             } else {
               template.querySelector('.icon').src =
                 json[i].icon;
-            }
+            }*/
             template.querySelector('.mdl-switch').setAttribute(
               'for',
               'list-switch-' + json[i].id
@@ -303,12 +303,19 @@
               'list-switch-' + json[i].id
             );
 
-            if (json[i].icon === undefined) {
+            if (json[i].speaker === undefined) {
+              template.querySelector('.mdl-chip').className += ' hidden';
+            } else {
+              template.querySelector('.mdl-chip').className =
+                'mdl-chip';
+            }
+
+ /*           if (json[i].icon === undefined) {
               template.querySelector('.mdl-chip').className += ' hidden';
             } else {
               template.querySelector('.mdl-chip').className =
                 'mdl-chip mdl-chip--contact';
-            }
+            }*/
 
             if (json[i].length === undefined) {
               template.querySelector('.length').className += ' hidden';

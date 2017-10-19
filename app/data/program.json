@@ -1,109 +1,164 @@
 [
   {
     "id": "1",
-    "title": "APERTURA XIII OPEN BIKO",
-    "timestart": "10:00",
+    "title": "APERTURA XIV OPEN BIKO",
+    "timestart": "09:15",
     "venue": "Navarra Factori, Cein"
   },
   {
     "id": "2",
-    "title": "eSports, un nuevo negocio digital",
-    "timestart": "10:00",
+    "title": "Serverless",
+    "timestart": "09:30",
     "length": "45",
     "venue": "Sal-on",
-    "speaker": "Ismael Liberal y Karlos G Liberal",
+    "speaker": "Ismael Liberal y David Gil",
     "icon": "/images/programa/ismael-patxangas.jpg"
   },
   {
-    "id": "4",
-    "title": "Primeros pinitos con Vue.js",
-    "timestart": "10:00",
+    "id": "3",
+    "title": "Reinventando las organizaciones",
+    "timestart": "09:30",
     "length": "45",
     "venue": "Sala Open Innovation",
-    "speaker": "Pablo Albizu y Gorka Moreno (540)",
-    "icon": "/images/programa/gorka-pablo.jpg"
+    "speaker": "Miren, Ujué, Karlos y Aritz"
   },
   {
-    "id": "3",
-    "title": "Sketch para principiantes",
-    "timestart": "10:00",
+    "id": "4",
+    "title": "Herramientas que deberíais de estar usando",
+    "timestart": "09:30",
     "length": "45",
     "venue": "Sala Naranja",
-    "speaker": "Aritz Oiaga y Amaya Eguizábal",
-    "icon": "/images/programa/aritz-amaya.jpg"
+    "speaker": "Susana Heredia"
   },
   {
     "id": "5",
-    "title": "Receteitor",
-    "timestart": "10:50",
-    "length": "15",
+    "title": " Competencias tecnológicas y habilidades laborales en el S.XXI: cómo evitar el analfabetismo digital",
+    "timestart": "10:20",
+    "length": "45",
     "venue": "Sal-on",
-    "speaker": "Karlos G Liberal",
-    "icon": "/images/programa/patxangas.jpg"
+    "speaker": "Nacho Samaniego y María Luisa Santos"
   },
   {
     "id": "6",
-    "title": "Behat + Symfony",
-    "timestart": "10:50",
-    "length": "15",
+    "title": "Maquetación Divina",
+    "timestart": "10:20",
+    "length": "45",
     "venue": "Sala Open Innovation",
-    "speaker": "Pablo Albizu (540)",
-    "icon": "/images/programa/pablo-albizu.jpg"
+    "speaker": "Rubén Bernárdez"
   },
   {
     "id": "7",
-    "title": "Formaciones (debate sobre cómo las preparamos)",
-    "timestart": "10:50",
+    "title": "Experiencia en un Design Sprint",
+    "timestart": "10:20",
     "length": "15",
     "venue": "Sala Naranja",
-    "speaker": "Moderador: Aritz Suescun",
-    "icon": "/images/programa/aritz-suescun.jpg"
+    "speaker": "Carlos Jiménez, Javier Azcona, Belén Castellot"
   },
   {
     "id": "8",
-    "title": "ALMUERZO",
-    "timestart": "11:10",
-    "length": "25",
-    "venue": "Navarra Factori, Cein"
-  },
-  {
-    "id": "10",
-    "title": "Google y los datos estructurados",
-    "timestart": "11:40",
-    "length": "45",
-    "venue": "Sal-on",
-    "speaker": "David Gil",
-    "icon": "/images/programa/david-gil.jpg"
+    "title": "Mis truquitos y herramientas para organizar un viaje",
+    "timestart": "10:40",
+    "length": "15",
+    "venue": "Sala Naranja",
+    "speaker": "Carlos Jiménez"
   },
   {
     "id": "9",
-    "title": "Update de tecnologías molonas",
-    "timestart": "11:40",
-    "length": "45",
-    "venue": "Sala Open Innovation",
-    "speaker": "Susana Heredia",
-    "icon": "/images/programa/susana.jpg"
-  },
-  {
-    "id": "11",
-    "title": "Validación de formularios en Angular 2 y en React con Redux Form",
-    "timestart": "11:40",
-    "length": "45",
-    "venue": "Sala Naranja",
-    "speaker": "Alberto Silva",
-    "icon": "/images/programa/alberto-silva.jpg"
-  },
-  {
-    "id": "12",
-    "title": "Propuesta y votación de charlas para las siguientes dos horas",
-    "timestart": "12:25",
+    "title": "ALMUERZO",
+    "timestart": "11:10",
     "length": "20",
     "venue": "Navarra Factori, Cein"
   },
   {
-    "id": "13",
-    "title": "Retrospectiva y cierre del Open Biko",
-    "timestart": "14:40",
+    "id": "10",
+    "title": "Persona Data De la escayola al Unity",
+    "timestart": "11:35",
+    "length": "45",
+    "venue": "Sal-on",
+    "speaker": "Karlos G Liberal"
+  },
+  {
+    "id": "11",
+    "title": "Qué se compra y qué inquieta a nuestros clientes potenciales",
+    "timestart": "11:35",
+    "length": "45",
+    "venue": "Sala Open Innovation",
+    "speaker": "Diego Cenzano y Belén Castellot"
+  },
+  {
+    "id": "12",
+    "title": "Streaming de video y formaciones con OBS",
+    "timestart": "11:35",
+    "length": "45",
+    "venue": "Sala Naranja",
+    "speaker": "Oier Bravo"
+  },
+  {
+    "id": "14",
+    "title": "Industria 4.0",
+    "timestart": "12:25",
+    "length": "45",
+    "venue": "Sal-on",
+    "speaker": "Juan Narro"
+  },
+  {
+    "id": "15",
+    "title": "Entendamos por qué las personas se comportan como lo hacen, y de ahí hasta la 'Persuasión Masiva Interpersonal'",
+    "timestart": "12:25",
+    "length": "45",
+    "venue": "Sala Open Innovation",
+    "speaker": "Ujué Agudo y Aritz Suescun"
+  },
+  {
+    "id": "16",
+    "title": "Drupal: 100 de 100 en PageSpeed",
+    "timestart": "12:25",
+    "length": "45",
+    "venue": "Sala Naranja",
+    "speaker": "Alberto Silva"
+  },
+  {
+    "id": "17",
+    "title": "Magic Open",
+    "timestart": "13:15",
+    "length": "45",
+    "venue": "Sal-on",
+    "speaker": "Oier Bravo y Ujué Agudo"
+  },
+  {
+    "id": "18",
+    "title": "Hagamos productos para cambiar el mundo con equipos multidisciplinares. Vuelta a los básicos.",
+    "timestart": "13:15",
+    "length": "45",
+    "venue": "Sala Open Innovation",
+    "speaker": "Susana Heredia"
+  },
+  {
+    "id": "19",
+    "title": "Mi Experiencia en Youtube",
+    "timestart": "13:15",
+    "length": "45",
+    "venue": "Sala Naranja",
+    "speaker": "Luis Gil"
+  },
+  {
+    "id": "20",
+    "title": "COMIDA",
+    "timestart": "14:00",
+    "length": "60",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "21",
+    "title": "Propuesta y selección Open Space de la tarde",
+    "timestart": "15:00",
+    "length": "30",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "22",
+    "title": "Retrospectiva y cierre del Open Space",
+    "timestart": "16:40",
     "length": "20",
     "venue": "Navarra Factori, Cein"
   }
