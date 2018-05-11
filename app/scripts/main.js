@@ -44,25 +44,6 @@
           }
         );
       }
-
-      /* email submit */
-      var submit = document.getElementById('submit');
-      if (submit) {
-        submit.addEventListener(
-          'click',
-          function(e) {
-            e.preventDefault();
-            var nameSurname = document.getElementById('name-surname').value;
-            var email = document.getElementById('email').value;
-            var cocktail = document.getElementById('cocktail').value;
-            document.location.href = 'mailto:10aniversario@biko2.com?' +
-              'subject=OpenBiko' +
-              '&body=Nombre: ' + nameSurname +
-              '. Email: ' + email +
-              '. Mensaje: ' + cocktail;
-          }
-        );
-      }
     });
 
     this.init = function() {
@@ -288,12 +269,12 @@
               json[i].venue;
             template.querySelector('.speaker').textContent =
               json[i].speaker;
-           /* if (json[i].icon === undefined) {
-              template.querySelector('.icon').src = '';
+            if (json[i].icon === undefined) {
+              template.querySelector('.icon').src = '/images/touch/android-chrome-384x384.png';
             } else {
               template.querySelector('.icon').src =
                 json[i].icon;
-            }*/
+            }
             template.querySelector('.mdl-switch').setAttribute(
               'for',
               'list-switch-' + json[i].id

@@ -203,7 +203,7 @@
         JSON.stringify(self.subscription)
       );
 
-      var url = 'https://openbiko-pwa.duckdns.org/get-events.json';
+      var url = 'https://openbiko.duckdns.org/get-events.json';
       fetch(url, {
         method: 'post',
         mode: 'cors',
@@ -277,7 +277,7 @@
         subscription: self.subscription
       };
 
-      var url = 'https://openbiko-pwa.duckdns.org/set-events';
+      var url = 'https://openbiko.duckdns.org/set-events';
       fetch(url, {
         method: 'post',
         mode: 'cors',
