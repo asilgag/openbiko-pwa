@@ -44,25 +44,6 @@
           }
         );
       }
-
-      /* email submit */
-      var submit = document.getElementById('submit');
-      if (submit) {
-        submit.addEventListener(
-          'click',
-          function(e) {
-            e.preventDefault();
-            var nameSurname = document.getElementById('name-surname').value;
-            var email = document.getElementById('email').value;
-            var cocktail = document.getElementById('cocktail').value;
-            document.location.href = 'mailto:10aniversario@biko2.com?' +
-              'subject=OpenBiko' +
-              '&body=Nombre: ' + nameSurname +
-              '. Email: ' + email +
-              '. Mensaje: ' + cocktail;
-          }
-        );
-      }
     });
 
     this.init = function() {
@@ -289,7 +270,7 @@
             template.querySelector('.speaker').textContent =
               json[i].speaker;
             if (json[i].icon === undefined) {
-              template.querySelector('.icon').src = '';
+              template.querySelector('.icon').src = '/images/touch/android-chrome-384x384.png';
             } else {
               template.querySelector('.icon').src =
                 json[i].icon;
@@ -303,12 +284,19 @@
               'list-switch-' + json[i].id
             );
 
-            if (json[i].icon === undefined) {
+            if (json[i].speaker === undefined) {
+              template.querySelector('.mdl-chip').className += ' hidden';
+            } else {
+              template.querySelector('.mdl-chip').className =
+                'mdl-chip';
+            }
+
+ /*           if (json[i].icon === undefined) {
               template.querySelector('.mdl-chip').className += ' hidden';
             } else {
               template.querySelector('.mdl-chip').className =
                 'mdl-chip mdl-chip--contact';
-            }
+            }*/
 
             if (json[i].length === undefined) {
               template.querySelector('.length').className += ' hidden';

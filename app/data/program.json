@@ -1,110 +1,151 @@
 [
   {
     "id": "1",
-    "title": "APERTURA XIII OPEN BIKO",
-    "timestart": "10:00",
+    "title": "APERTURA XV OPEN SPACE BIKO",
+    "timestart": "09:15",
+    "length": "15",
     "venue": "Navarra Factori, Cein"
   },
   {
     "id": "2",
-    "title": "eSports, un nuevo negocio digital",
-    "timestart": "10:00",
+    "title": "React component patterns",
+    "timestart": "09:30",
     "length": "45",
     "venue": "Sal-on",
-    "speaker": "Ismael Liberal y Karlos G Liberal",
-    "icon": "/images/programa/ismael-patxangas.jpg"
-  },
-  {
-    "id": "4",
-    "title": "Primeros pinitos con Vue.js",
-    "timestart": "10:00",
-    "length": "45",
-    "venue": "Sala Open Innovation",
-    "speaker": "Pablo Albizu y Gorka Moreno (540)",
-    "icon": "/images/programa/gorka-pablo.jpg"
+    "speaker": "540 (Pablo Albizu, Iker Mariñelarena, Gorka Moreno)",
+    "icon": "/images/programa/540.png"
   },
   {
     "id": "3",
-    "title": "Sketch para principiantes",
-    "timestart": "10:00",
+    "title": "Captación de Leads en el mundo digital",
+    "timestart": "09:30",
     "length": "45",
-    "venue": "Sala Naranja",
-    "speaker": "Aritz Oiaga y Amaya Eguizábal",
-    "icon": "/images/programa/aritz-amaya.jpg"
+    "venue": "Sala Open Innovation",
+    "speaker": "Juan Narro",
+    "icon": "/images/programa/juan-narro.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Consultoría challenge",
+    "timestart": "09:30",
+    "length": "45",
+    "venue": "Auditorio",
+    "speaker": "Carlos Jiménez",
+    "icon": "/images/programa/carlos-jimenez.jpg"
   },
   {
     "id": "5",
-    "title": "Receteitor",
-    "timestart": "10:50",
-    "length": "15",
+    "title": "BikoGynkana",
+    "timestart": "10:20",
+    "length": "45",
     "venue": "Sal-on",
-    "speaker": "Karlos G Liberal",
-    "icon": "/images/programa/patxangas.jpg"
+    "speaker": "Equipo Bola 8"
   },
   {
     "id": "6",
-    "title": "Behat + Symfony",
-    "timestart": "10:50",
-    "length": "15",
+    "title": "¡Muerte a Drupal, larga vida a JAMstack¡",
+    "timestart": "10:20",
+    "length": "45",
     "venue": "Sala Open Innovation",
-    "speaker": "Pablo Albizu (540)",
-    "icon": "/images/programa/pablo-albizu.jpg"
+    "speaker": "Alberto Silva",
+    "icon": "/images/programa/alberto-silva.jpg"
   },
   {
     "id": "7",
-    "title": "Formaciones (debate sobre cómo las preparamos)",
-    "timestart": "10:50",
-    "length": "15",
-    "venue": "Sala Naranja",
-    "speaker": "Moderador: Aritz Suescun",
-    "icon": "/images/programa/aritz-suescun.jpg"
+    "title": "Realidad Virtual en la Web",
+    "timestart": "10:20",
+    "length": "45",
+    "venue": "Auditorio",
+    "speaker": "Karlos G. Liberal",
+    "icon": "/images/programa/patxangas.jpg"
   },
   {
     "id": "8",
     "title": "ALMUERZO",
-    "timestart": "11:10",
-    "length": "25",
+    "timestart": "11:05",
+    "length": "30",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "9",
+    "title":
+      "Open Space: propuesta y votación de charlas para las siguientes tres horas",
+    "timestart": "11:40",
+    "length": "30",
     "venue": "Navarra Factori, Cein"
   },
   {
     "id": "10",
-    "title": "Google y los datos estructurados",
-    "timestart": "11:40",
+    "title": "Open Space: 1ª tanda de charlas",
+    "timestart": "12:15",
+    "length": "45",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "11",
+    "title": "Open Space: 2ª tanda de charlas",
+    "timestart": "13:05",
+    "length": "45",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "12",
+    "title": "Open Space: 3ª tanda de charlas",
+    "timestart": "13:55",
+    "length": "45",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "13",
+    "title": "Comida",
+    "timestart": "14:40",
+    "length": "60",
+    "venue": "Navarra Factori, Cein"
+  },
+  {
+    "id": "14",
+    "title": "Marketing Automation 101",
+    "timestart": "15:45",
     "length": "45",
     "venue": "Sal-on",
     "speaker": "David Gil",
     "icon": "/images/programa/david-gil.jpg"
   },
   {
-    "id": "9",
-    "title": "Update de tecnologías molonas",
-    "timestart": "11:40",
+    "id": "15",
+    "title": "Cómo hacer juegos en una hora con Hype",
+    "timestart": "15:45",
     "length": "45",
-    "venue": "Sala Open Innovation",
-    "speaker": "Susana Heredia",
-    "icon": "/images/programa/susana.jpg"
+    "venue": "Auditorio",
+    "speaker": "Victor San Vicente",
+    "icon": "/images/programa/victor-san-vicente.jpg"
   },
   {
-    "id": "11",
-    "title": "Validación de formularios en Angular 2 y en React con Redux Form",
-    "timestart": "11:40",
+    "id": "16",
+    "title": "Proyectos de arquitectura vs proyectos de Internet",
+    "timestart": "16:35",
+    "length": "20",
+    "venue": "Sal-on",
+    "speaker": "Aritz y Jaime Suescun",
+    "icon": "/images/programa/aritz-suescun.jpg"
+  },
+  {
+    "id": "17",
+    "title": "Research científica vs research UX",
+    "timestart": "16:35",
     "length": "45",
-    "venue": "Sala Naranja",
-    "speaker": "Alberto Silva",
-    "icon": "/images/programa/alberto-silva.jpg"
+    "venue": "Auditorio",
+    "speaker": "Ujué Agudo",
+    "icon": "/images/programa/ujue-agudo.jpg"
   },
   {
-    "id": "12",
-    "title": "Propuesta y votación de charlas para las siguientes dos horas",
-    "timestart": "12:25",
+    "id": "18",
+    "title":
+      "Qué es React, qué nos aporta y por qué lo hemos elegido como compañero de viaje",
+    "timestart": "17:00",
     "length": "20",
-    "venue": "Navarra Factori, Cein"
-  },
-  {
-    "id": "13",
-    "title": "Retrospectiva y cierre del Open Biko",
-    "timestart": "14:40",
-    "length": "20",
-    "venue": "Navarra Factori, Cein"
+    "venue": "Sal-on",
+    "speaker": "Rubén Bernárdez",
+    "icon": "/images/programa/ruben-bernardez.jpg"
   }
 ]
