@@ -1,3 +1,4 @@
+// NO USADO: SU CONTENIDO ESTA METIDO DENTRO DE main.js
 /*!
  *
  *  Web Starter Kit
@@ -96,19 +97,19 @@
 
     this.initializeState = function() {
       console.log('[Notifications] UI state initialization started');
-      // We need the service worker registration to check for a subscription
+      /* We need the service worker registration to check for a subscription */
       navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
         self.registration = serviceWorkerRegistration;
-        // Do we already have a push message subscription?
+        /* Do we already have a push message subscription? */
         serviceWorkerRegistration.pushManager.getSubscription()
           .then(function(subscription) {
             console.log('[Notifications] pushManager response received');
             self.subscription = subscription;
 
-            // Show auto notification link
+            /* Show auto notification link */
             self.showAutoNotificationLink();
 
-            // Propagate data from server if device is already suscribed
+            /* Propagate data from server if device is already suscribed */
             if (self.subscription) {
               self.propagateDataFromServer();
             } else {
@@ -116,10 +117,10 @@
                 'not present: no data will be loaded from server.');
             }
 
-            // Add click events before showing switches
+            /* Add click events before showing switches */
             document.querySelectorAll('.mdl-switch__input').forEach(
               function(item) {
-                // Add events to switch inputs
+                /* Add events to switch inputs */
                 item.addEventListener(
                   'click',
                   self.processSwitchClick
@@ -127,7 +128,7 @@
               }
             );
 
-            // Show switches if online mode detected
+            /* Show switches if online mode detected */
             if (navigator.onLine) {
               console.log(
                 '[Notifications] Online mode detected. navigator.onLine:',
@@ -141,6 +142,9 @@
               );
               self.hideSwitches();
             }
+          }, err => {
+            console.warn('[Notifications] Error during ' +
+              'getSubscription()', err);
           })
           .catch(function(err) {
             console.warn('[Notifications] Error during ' +

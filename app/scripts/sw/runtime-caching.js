@@ -38,7 +38,6 @@
     [
       '/',
       '/index.html',
-      '/hace-10-anyos',
       '/faq'
     ]
   );
@@ -55,9 +54,6 @@
     origin: /\.(?:firebaseapp)\.(com)$/
   });
   global.toolbox.router.get('/index.html', global.toolbox.fastest, {
-    origin: /\.(?:firebaseapp)\.(com)$/
-  });
-  global.toolbox.router.get('/hace-10-anyos', global.toolbox.fastest, {
     origin: /\.(?:firebaseapp)\.(com)$/
   });
   global.toolbox.router.get('/faq', global.toolbox.fastest, {

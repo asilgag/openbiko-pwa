@@ -1,73 +1,82 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Biko Open Space</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Biko Open Space</title>
 
-    <!-- Web Application Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Biko Open Space">
-    <meta name="application-name" content="Biko Open Space">
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Biko Open Space">
+  <meta name="application-name" content="Biko Open Space">
 
 
-    <!-- App Shell critical path styles -->
-    <link inline rel="stylesheet" href="styles/app-shell/app-shell.css" type="text/css">
+  <!-- App Shell critical path styles -->
+  <link inline rel="stylesheet" href="styles/app-shell/app-shell.css" type="text/css">
 </head>
+
 <body>
 
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
     <header class="mdl-layout__header">
 
-        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
-            <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </svg>
-        </div>
+      <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
+        <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </div>
 
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Biko Open Space</span>
-
-
-            <button id="menu-lower-right"
-                    class="mdl-button mdl-js-button mdl-button--icon">
-                <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                </svg>
-            </button>
-
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                for="menu-lower-right">
-                <li class="mdl-menu__item send-auto-notification hidden">Generar notificación</li>
-                <li class="mdl-menu__item"><a href="https://github.com/asilgag/openbiko-pwa" target="_blank">Ver código frontend</a></li>
-                <li class="mdl-menu__item"><a href="https://github.com/asilgag/web-push-notifications-php-backend" target="_blank">Ver código backend</a></li>
-                <li class="mdl-menu__item"><a href="mailto:alberto.silva@biko2.com" target="_blank">¿Te interesa? Escríbeme...</a></li>
-            </ul>
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Biko Open Space</span>
 
 
-        </div>
+        <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+          <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </button>
+
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
+          <li class="mdl-menu__item send-auto-notification hidden">Generar notificación</li>
+          <li class="mdl-menu__item">
+            <a href="https://github.com/asilgag/openbiko-pwa" target="_blank">Ver código frontend</a>
+          </li>
+          <li class="mdl-menu__item">
+            <a href="https://github.com/asilgag/web-push-notifications-php-backend" target="_blank">Ver código backend</a>
+          </li>
+          <li class="mdl-menu__item">
+            <a href="mailto:alberto.silva@biko2.com" target="_blank">¿Te interesa? Escríbeme...</a>
+          </li>
+        </ul>
+
+
+      </div>
 
     </header>
 
 
     <div class="mdl-layout__drawer">
-        <div class="mdl-layout-head">
-            <img src="images/app-shell/logo--white.png" alt="Biko">
-            <span class="mdl-layout-subtitle">31 de marzo</span>
-            <span class="mdl-layout-title">XIII Biko Open Space</span>
-        </div>
-        <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="/"><i class="material-icons">event_note</i> Programa</a>
-            <a class="mdl-navigation__link" href="/faq"><i class="material-icons">pages</i> FAQ</a>
-        </nav>
+      <div class="mdl-layout-head">
+        <img src="images/app-shell/logo--white.png" alt="Biko">
+        <span class="mdl-layout-subtitle">31 de marzo</span>
+        <span class="mdl-layout-title">XIII Biko Open Space</span>
+      </div>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">
+          <i class="material-icons">event_note</i> Programa</a>
+        <a class="mdl-navigation__link" href="/faq">
+          <i class="material-icons">pages</i> FAQ</a>
+      </nav>
     </div>
 
 
@@ -75,99 +84,99 @@
 
     </main>
 
-</div>
+  </div>
 
 
-<div class="loader">
+  <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">
-        <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
     </svg>
-</div>
+  </div>
 
 
-<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="share">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+    id="share">
     <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+      />
     </svg>
-</button>
+  </button>
 
 
 
 
 
 
-<div class="share-menu-container">
-    <ul id="share-menu" class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect"
-        data-mdl-for="share" style="display:none">
+  <div class="share-menu-container">
+    <ul id="share-menu" class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect" data-mdl-for="share" style="display:none">
 
-        <li class="mdl-menu__item">
+      <li class="mdl-menu__item">
         <span class="mdl-chip mdl-chip--contact mdl-shadow--4dp" data-link="whatsapp://send?text={title} {url}">
-            <span class="mdl-chip__text">Whatsapp</span>
-            <span class="mdl-chip__contact mdl-color-text--white">
-                <img src="images/app-shell/whatsapp.svg">
-            </span>
+          <span class="mdl-chip__text">Whatsapp</span>
+          <span class="mdl-chip__contact mdl-color-text--white">
+            <img src="images/app-shell/whatsapp.svg">
+          </span>
         </span>
-        </li>
+      </li>
 
-        <li class="mdl-menu__item">
+      <li class="mdl-menu__item">
         <span class="mdl-chip mdl-chip--contact mdl-shadow--4dp" data-link="https://www.linkedin.com/cws/share?url={url}">
-            <span class="mdl-chip__text">LinkedIn</span>
-            <span class="mdl-chip__contact mdl-color-text--white">
-                <img src="images/app-shell/linkedin.svg">
-            </span>
+          <span class="mdl-chip__text">LinkedIn</span>
+          <span class="mdl-chip__contact mdl-color-text--white">
+            <img src="images/app-shell/linkedin.svg">
+          </span>
         </span>
-        </li>
+      </li>
 
-        <li class="mdl-menu__item">
+      <li class="mdl-menu__item">
         <span class="mdl-chip mdl-chip--contact mdl-shadow--4dp" data-link="https://www.facebook.com/sharer/sharer.php?u={url}">
-            <span class="mdl-chip__text">Facebook</span>
-            <span class="mdl-chip__contact mdl-color-text--white">
-                <img src="images/app-shell/facebook.svg">
-            </span>
+          <span class="mdl-chip__text">Facebook</span>
+          <span class="mdl-chip__contact mdl-color-text--white">
+            <img src="images/app-shell/facebook.svg">
+          </span>
         </span>
-        </li>
+      </li>
 
-        <li class="mdl-menu__item">
+      <li class="mdl-menu__item">
         <span class="mdl-chip mdl-chip--contact mdl-shadow--4dp" data-link="https://twitter.com/intent/tweet?text={title} {url} via @biko2">
-            <span class="mdl-chip__text">Twitter</span>
-            <span class="mdl-chip__contact mdl-color-text--white">
-                <img src="images/app-shell/twitter.svg">
-            </span>
+          <span class="mdl-chip__text">Twitter</span>
+          <span class="mdl-chip__contact mdl-color-text--white">
+            <img src="images/app-shell/twitter.svg">
+          </span>
         </span>
-        </li>
+      </li>
     </ul>
-</div>
+  </div>
 
 
-<div id="snackbar" class="mdl-js-snackbar mdl-snackbar" style="display:none">
+  <div id="snackbar" class="mdl-js-snackbar mdl-snackbar" style="display:none">
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
-</div>
+  </div>
 
 
-<!-- Load non-shell styles synchronously, to avoid side effects with mdl -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css">
-<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-blue.min.css" type="text/css">
-<link rel="stylesheet" href="styles/main.css" type="text/css">
+  <!-- Load non-shell styles synchronously, to avoid side effects with mdl -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,500,700" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-blue.min.css" type="text/css">
+  <link rel="stylesheet" href="styles/main.css" type="text/css">
 
-<!-- Load mdl script to give functionality to the app-shell -->
-<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <!-- Load mdl script to give functionality to the app-shell -->
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
-<!-- build:js scripts/main.min.js -->
-<script src="scripts/app-shell.js"></script>
-<script src="scripts/notifications.js"></script>
-<script src="scripts/sw/sw-init.js"></script>
-<script src="scripts/main.js"></script>
-<!-- endbuild -->
-
-
+  <!-- build:js scripts/main.min.js -->
+  <script src="scripts/app-shell.js"></script>
+  <script src="scripts/sw/sw-init.js"></script>
+  <script src="scripts/main.js"></script>
+  <!-- endbuild -->
 
 
 
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -177,6 +186,7 @@
     ga('send', 'pageview');
 </script>
  -->
-<!-- Built with love using Web Starter Kit -->
+  <!-- Built with love using Web Starter Kit -->
 </body>
+
 </html>

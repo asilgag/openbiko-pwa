@@ -12,7 +12,7 @@
     "timestart": "09:30",
     "length": "45",
     "venue": "Sal-on",
-    "speaker": "540 (Pablo Albizu, Iker Mariñelarena, Gorka Moreno)",
+    "speaker": "540",
     "icon": "/images/programa/540.png"
   },
   {
@@ -43,7 +43,7 @@
   },
   {
     "id": "6",
-    "title": "¡Muerte a Drupal, larga vida a JAMstack¡",
+    "title": "¡Muerte a Drupal, larga vida a JAMstack!",
     "timestart": "10:20",
     "length": "45",
     "venue": "Sala Open Innovation",

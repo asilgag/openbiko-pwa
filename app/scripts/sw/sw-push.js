@@ -41,6 +41,6 @@ self.addEventListener('notificationclick', function(event) {
   console.log('[Service Worker] Notification click received');
   event.notification.close();
   event.waitUntil(
-    clients.openWindow('https://openbiko-pwa.firebaseapp.com/programa')
+    clients.openWindow('https://openbiko-pwa.firebaseapp.com/')
   );
 });
