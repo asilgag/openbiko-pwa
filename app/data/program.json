@@ -12,8 +12,7 @@
     "timestart": "09:30",
     "length": "20",
     "venue": "Sal-on",
-    "speaker": "Aritz y Jaime Suescun",
-    "icon": "/images/programa/aritz-suescun.jpg"
+    "speaker": "Aritz y Jaime Suescun"
   },
   {
     "id": "3",
@@ -35,8 +34,7 @@
   },
   {
     "id": "5",
-    "title":
-      "Qué es React, qué nos aporta y por qué lo hemos elegido como compañero de viaje",
+    "title": "Qué es React, qué nos aporta y por qué lo hemos elegido como compañero de viaje",
     "timestart": "10:00",
     "length": "15",
     "venue": "Sal-on",
@@ -79,8 +77,7 @@
   },
   {
     "id": "10",
-    "title":
-      "Open Space: propuesta y votación de charlas para las siguientes tres horas",
+    "title": "Open Space: propuesta y votación de charlas para las siguientes tres horas",
     "timestart": "11:40",
     "length": "30",
     "venue": "Navarra Factori, Cein"
@@ -149,8 +146,7 @@
   },
   {
     "id": "17",
-    "title":
-      "¿Haces test de tu código? Tu código puede testearse, incluso Drupal 8",
+    "title": "¿Haces test de tu código? Tu código puede testearse, incluso Drupal 8",
     "timestart": "16:35",
     "length": "45",
     "venue": "Sal-on",

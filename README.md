@@ -14,7 +14,6 @@ Demo de Progressive Web App para el Biko Open Space del 27 de mayo de 2022.
 ### Funcionalidades
 
 - App-shell
-- Service worker
 - Navegación offline
 - Notificaciones push
 

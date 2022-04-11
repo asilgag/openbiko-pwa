@@ -5,24 +5,22 @@
   }
 }
 
-.mdl-layout__drawer{
-  border:none !important;
+.mdl-layout__drawer {
+  border: none !important;
 }
 
-.mdl-layout-head{
-  background: url(../../images/app-shell/side-nav-bg.jpg);
-  background-size: cover;
-  padding:15px;
-  color:#fff;
-  img{
-    display:block;
-    width:100px;
-    margin-bottom:70px;
+.mdl-layout-head {
+  background: #e73f39;
+  padding: 15px;
+  color: #fff;
+  img {
+    display: block;
+    width: 100px;
+    margin-bottom: 70px;
   }
-
 }
 
-.mdl-layout__drawer{
+.mdl-layout__drawer {
   .mdl-navigation {
     .mdl-navigation__link {
       padding: 16px 40px 16px 20px !important;
