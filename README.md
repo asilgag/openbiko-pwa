@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Demo de Progressive Web App para el Biko Open Space del 27 de mayo de 2022.
+Progressive Web App para el Biko Open Space.
 
 ### Basado en
 
@@ -10,12 +10,6 @@ Demo de Progressive Web App para el Biko Open Space del 27 de mayo de 2022.
   https://github.com/google/web-starter-kit/
 - Material Design Lite: https://getmdl.io/
 - location-bar: https://www.npmjs.com/package/location-bar
-
-### Funcionalidades
-
-- App-shell
-- Navegación offline
-- Notificaciones push
 
 ### Gulp
 
