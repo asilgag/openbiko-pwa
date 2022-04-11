@@ -222,9 +222,26 @@ de main.js
         })
         .then(function (response) {
           var json = JSON.parse(response);
+
+          var dateNow = new Date();
+          var now =
+            dateNow.getHours().toString() +
+            ":" +
+            dateNow.getMinutes().toString() +
+            ":00";
+
           console.log("[Main] " + url + " fetched");
           var template;
           for (var i = 0; i - json.length; i++) {
+            var slotTime = json[i].timestart.split(":");
+            var slotHour = slotTime[0];
+            var slotMinutes = parseInt(slotTime[1]) + 15;
+            var postTime = slotHour + ":" + slotMinutes;
+
+            if (now > postTime) {
+              //   continue;
+            }
+
             template = document.querySelector("template").content;
             template.querySelector(".title").textContent = json[i].title;
             // template.querySelector('.description').textContent =

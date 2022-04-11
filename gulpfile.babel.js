@@ -173,6 +173,7 @@ export const html = () => {
 export const clean = () => del([".tmp", "dist/*", "!dist/.git"], { dot: true });
 
 export const watcher = () => {
+  gulp.watch(["app/**/*.json"], gulp.series(copy, browsersyncReload));
   gulp.watch(["app/**/*.html"], gulp.series(html, browsersyncReload));
   gulp.watch(
     ["app/styles/**/*.{scss,css}"],

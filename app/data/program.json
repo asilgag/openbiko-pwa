@@ -164,10 +164,17 @@
   {
     "id": "18",
     "title": "Research científica vs research UX",
-    "timestart": "16:35",
+    "timestart": "17:00",
     "length": "45",
     "venue": "Auditorio",
     "speaker": "Ujué Agudo",
     "icon": "/images/programa/ujue-agudo.jpg"
+  },
+  {
+    "id": "19",
+    "title": "Nos vemos en los bares",
+    "timestart": "21:00",
+    "venue": "Plaza del castillo",
+    "speaker": "Enjoy"
   }
 ]
