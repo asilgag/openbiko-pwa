@@ -1,7 +1,6 @@
 /* eslint-env browser */
-(function() {
-  'use strict';
-
+(function () {
+  "use strict";
   /*
   var remoteStyles = [
     'http://fonts.googleapis.com/css?family=Roboto:300,500,700',
@@ -47,26 +46,26 @@
   */
 
   // Share links
-  var goToLink = function(e) {
+  var goToLink = function (e) {
     e.preventDefault();
     var title = encodeURIComponent(document.title);
     var url = encodeURIComponent(document.location.href);
-    var link = this.getAttribute('data-link');
-    link = link.replace('{title}', title).replace('{url}', url);
+    var link = this.getAttribute("data-link");
+    link = link.replace("{title}", title).replace("{url}", url);
     document.location.href = link;
   };
 
-  var shareLinks = document.querySelectorAll('#share-menu .mdl-chip');
+  var shareLinks = document.querySelectorAll("#share-menu .mdl-chip");
   for (var i = 0; i < shareLinks.length; i++) {
-    shareLinks[i].addEventListener('click', goToLink);
+    shareLinks[i].addEventListener("click", goToLink);
   }
 
   // Show app-shell share menu again
-  var shareButton = document.getElementById('share');
-  shareButton.addEventListener('click', function() {
-    var shareMenu = document.getElementById('share-menu');
-    shareMenu.style.cssText = 'display.block !important';
+  var shareButton = document.getElementById("share");
+  shareButton.addEventListener("click", function () {
+    var shareMenu = document.getElementById("share-menu");
+    shareMenu.style.cssText = "display.block !important";
   });
 
-  document.getElementById('snackbar').style.display = 'block';
+  document.getElementById("snackbar").style.display = "block";
 })();

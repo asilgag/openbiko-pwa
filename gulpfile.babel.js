@@ -26,23 +26,28 @@
 
 import path from "path";
 import gulp from "gulp";
+import concat from "gulp-concat";
+import rename from "gulp-rename";
+import uglify from "gulp-uglify";
 import del from "del";
 import modRewrite from "connect-modrewrite";
-import runSequence from "run-sequence";
-import browserSync from "browser-sync";
+//import browserSync from "browser-sync";
 import swPrecache from "sw-precache";
-import browserify from "browserify";
 import inlinesource from "gulp-inline-source";
-import through2 from "through2";
 import cssBase64 from "gulp-css-base64";
 import fs from "fs";
 import realFavicon from "gulp-real-favicon";
 import gulpLoadPlugins from "gulp-load-plugins";
 import { output as pagespeedVendor } from "psi";
 import pkg from "./package.json";
+import through2 from "through2";
+import browserify from "browserify";
+
+const browserSync = require("browser-sync").create();
+const sass = require("gulp-sass")(require("sass"));
+const squoosh = require("gulp-libsquoosh");
 
 const $ = gulpLoadPlugins();
-export const reload = browserSync.reload;
 
 // Lint JavaScript
 export const lint = () => {
@@ -51,23 +56,16 @@ export const lint = () => {
 
 // Optimize images
 export const images = () => {
-  gulp
+  return gulp
     .src("app/images/**/*")
-    .pipe(
-      $.cache(
-        $.imagemin({
-          progressive: true,
-          interlaced: true,
-        })
-      )
-    )
+    .pipe(squoosh())
     .pipe(gulp.dest("dist/images"))
     .pipe($.size({ title: "images" }));
 };
 
 // Copy all files at the root level (app)
 export const copy = () => {
-  gulp
+  return gulp
     .src(
       [
         "app/*",
@@ -104,9 +102,9 @@ export const styles = () => {
       .pipe($.newer(".tmp/styles"))
       .pipe($.sourcemaps.init())
       .pipe(
-        $.sass({
+        sass({
           precision: 10,
-        }).on("error", $.sass.logError)
+        }).on("error", sass.logError)
       )
       .pipe(cssBase64({ extensionsAllowed: [".woff2"] }))
       .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -119,10 +117,50 @@ export const styles = () => {
   );
 };
 
+//script paths
+
+export const browserify2 = () => {
+  glob("./app/scripts/**/*.js", {}, function (files) {
+    var b = browserify();
+    files.forEach(function (file) {
+      b.add(file);
+    });
+
+    b.bundle().pipe(source("output.js")).pipe(gulp.dest("dist/scripts"));
+
+    cb();
+  });
+};
+
+var jsFiles = "./app/scripts/**/*.js",
+  jsDest = "dist/scripts";
+
+export const scripts = () => {
+  return gulp
+    .src(jsFiles)
+    .pipe(
+      through2.obj(function (file, enc, next) {
+        browserify(file.path).bundle(function (err, res) {
+          if (err) {
+            return next(err);
+          }
+
+          file.contents = res;
+          next(null, file);
+        });
+      })
+    )
+    .pipe(concat("main.js"))
+    .pipe(gulp.dest(jsDest))
+    .pipe(rename("main.min.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest(jsDest));
+};
+
 // Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
 // to enable ES2015 support remove the line `"only": "gulpfile.babel.js",` in the
 // `.babelrc` file.
-export const scripts = () => {
+export const scriptsOld = () => {
   gulp
     .src([
       // Note: Since we are not using useref in the scripts build pipeline,
@@ -133,25 +171,22 @@ export const scripts = () => {
       "./app/scripts/main.js",
     ])
     .pipe($.newer(".tmp/scripts"))
-    .pipe(
-      through2.obj(function (file, enc, next) {
-        browserify(file.path).bundle(function (err, res) {
-          // assumes file.contents is a Buffer
-          file.contents = res;
-          next(null, file);
-        });
-      })
-    )
+    // .pipe(
+    //   through2.obj(function (file, enc, next) {
+    //     browserify(file.path)
+    //       .transform("stripify")
+    //       .bundle(function (err, res) {
+    //         // assumes file.contents is a Buffer
+    //         file.contents = res;
+    //         next(null, file);
+    //       });
+    //   })
+    // )
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(".tmp/scripts"))
     .pipe($.concat("main.min.js"))
-    /* .pipe($.uglify({preserveComments: 'some'})
-    .on('error', function(e){
-      console.log(e);
-    })
-  )*/
     // Output files
     .pipe($.size({ title: "scripts" }))
     .pipe($.sourcemaps.write("."))
@@ -222,18 +257,18 @@ export const html = () => {
 // Clean output directory
 export const clean = () => del([".tmp", "dist/*", "!dist/.git"], { dot: true });
 
-const gulpWatch = (params) => {
-  gulp.watch(["app/**/*.html"], gulp.series(reload));
-  gulp.watch(["app/styles/**/*.{scss,css}"], ["styles", gulp.series(reload)]);
-  gulp.watch(["app/scripts/**/*.js"], ["lint", "scripts", gulp.series(reload)]);
-  gulp.watch(["app/images/**/*"], gulp.series(reload));
+export const watcher = () => {
+  gulp.watch(["app/**/*.html"], gulp.series(browsersyncReload));
+  gulp.watch(
+    ["app/styles/**/*.{scss,css}"],
+    gulp.series(styles, browsersyncReload)
+  );
+  gulp.watch(["app/scripts/**/*.js"], gulp.series(scripts, browsersyncReload));
+  gulp.watch(["app/images/**/*"], gulp.series(browsersyncReload));
 };
 
-// Watch files for changes & reload
-export const serve = () => {
-  gulp.series(scripts, styles);
-
-  browserSync({
+export const browser = (cb) => {
+  browserSync.init({
     notify: false,
     // Customize the Browsersync console logging prefix
     logPrefix: "BIKO",
@@ -244,14 +279,22 @@ export const serve = () => {
     //       will present a certificate warning in the browser.
     // https: true,
     server: {
-      baseDir: [".tmp", "app"],
+      //baseDir: [".tmp", "app"],
+      baseDir: ["dist", "app"],
       middleware: [modRewrite(["!\\.\\w+$ /index.html [L]"])],
     },
     port: 3000,
   });
-
-  gulp.series(gulpWatch);
+  cb();
 };
+
+export const browsersyncReload = (cb) => {
+  browserSync.reload;
+  cb();
+};
+
+// Watch files for changes & reload
+gulp.task("serve", gulp.series(scripts, styles, images, browser, watcher));
 
 // Build and serve the output from the dist build
 export const serveDist = () => {
@@ -275,19 +318,6 @@ export const serveDist = () => {
     },
     port: 3001,
   });
-};
-
-// Build production files, the taskDefault task
-export const taskDefault = (cb) => {
-  gulp.series(clean);
-  runSequence(
-    "clearCache",
-    "styles",
-    ["lint", "scripts", "images", "copy"],
-    "html",
-    "generateServiceSorker",
-    cb
-  );
 };
 
 // Run PageSpeed Insights
@@ -355,6 +385,21 @@ export const generateServiceSorker = () => {
 export const clearCache = () => {
   $.cache.clearAll();
 };
+
+// Build production files, the taskDefault task
+gulp.task(
+  "default",
+  gulp.series(
+    clean,
+    styles,
+    //lint,
+    scripts,
+    images,
+    copy,
+    html,
+    generateServiceSorker
+  )
+);
 
 // Load custom tasks from the `tasks` directory
 // Run: `npm install --save-dev require-dir` from the command-line

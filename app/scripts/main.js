@@ -7,8 +7,6 @@ tenemos que poner los datos de notificactions.js dentro
 de main.js
 */
 
-import LocationBar from "location-bar";
-
 (function () {
   "use strict";
 
@@ -407,7 +405,7 @@ import LocationBar from "location-bar";
       self.loadedUrl = null;
       self.selectorToClick = null;
 
-      //var LocationBar = require("location-bar");
+      var LocationBar = require("location-bar");
 
       self.locationBar = new LocationBar();
 
