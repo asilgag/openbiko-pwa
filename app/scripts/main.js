@@ -239,7 +239,7 @@ de main.js
             var postTime = slotHour + ":" + slotMinutes;
 
             if (now > postTime) {
-              //   continue;
+              continue;
             }
 
             template = document.querySelector("template").content;
